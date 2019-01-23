@@ -99,6 +99,8 @@ int main(void) {
     // (10) C[9] = ?
 
     C[10] = *(pInt + 1);
+    //pInt -> B[0]
+    //pInt 1 -> B[1] -> 0x9999
     // (11) C[10] = ?
 
     C[11] = *(++pInt);
@@ -137,10 +139,10 @@ int main(void) {
     
     // You can check your results by runing the code and see the values in a 
     // Watch window or using the printf function. 
-//    printf("The values of Cs are as follows:\n");
-//    for (int i=0; i<18; i++) {
-//        printf("C[%d] = 0x%X\n", i, C[i]);
-//    }
+   printf("The values of Cs are as follows:\n");
+   for (int i=0; i<18; i++) {
+       printf("C[%d] = 0x%X\n", i, C[i]);
+   }
     int temp = 234;
     //printf("0x%X\n", temp);
     
