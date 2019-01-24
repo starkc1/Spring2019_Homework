@@ -31,7 +31,7 @@ int32_t func2_norm(uint32_t *fibo_array) {
 }
 
 void func3_print(uint32_t *fibo_array) {
-    for (int i = 0; i <= 7; i++) {
+    for (int i = 1; i <= 8; i++) {
         printf("Fibonacci Value %X: %d\n",i, fibo_array[i]);
     }
 }
