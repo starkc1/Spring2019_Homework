@@ -38,27 +38,19 @@ void print_str_c(uint16_t num, char *cPtr)
 
 void print_str_v(uint16_t num, char *cPtr_c, char *cPtr_v)
 {
-    int j = 0;
-    count = 1;
-        
-    for (int i = 0; i <= 15; i++) {
-        // j = i % 5;
-        // if (j == 0) {
-        //     *(cPtr_v + count) = '_';
-        //     *(cPtr_v + count) = *(cPtr_c + i);
-        // } else {
-        //     *(cPtr_v + count) = *(cPtr_c + i-1);
-        // }
-        // count++;
+    int j = 1;
+    count = 0;
 
-        if (count == 5) {
-            *(cPtr_v + i) = '_';
-            count = 1;
+    for (int i = 0; i <= 15; i++) {
+        j = i % 5;
+        if (j == 0) {
+            //*(cPtr_v + count) = '_';
+            //*(cPtr_v + count+1) = *(cPtr_c + i+1);
         } else {
-            *(cPtr_v + i) = *(cPtr_c + (j));
-            count++;
+
+            //*(cPtr_v + count) = *(cPtr_c + i);
         }
-        j++;
+        count++;
     }   
     printf("%s", cPtr_v);
 }
