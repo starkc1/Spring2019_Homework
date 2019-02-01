@@ -14,17 +14,11 @@ void uint16_2_binary_str(uint16_t num, char *cPtr)
     {
         k = num >> c;
         
-        if (k & 1)
-            //str_c[count] = '1';                    
-            //cPtr[count] = "1";
+        if (k & 1) {
             *(cPtr + count) = '1';
-            //printf("1");
-        else
-            //str_c[count] = '0';
+        } else {
             *(cPtr + count) = '0';
-            //cPtr[count] = "0";
-            //printf("0");
-        
+        }
         count++;
     }
     
@@ -41,17 +35,35 @@ void print_str_v(uint16_t num, char *cPtr_c, char *cPtr_v)
     int j = 1;
     count = 0;
 
-    for (int i = 0; i <= 15; i++) {
-        j = i % 5;
-        if (j == 0) {
-            //*(cPtr_v + count) = '_';
-            //*(cPtr_v + count+1) = *(cPtr_c + i+1);
+    for (int i = 0; i < 20; i++) {
+        if (i % 5 == 0) {
+            *(cPtr_v) << '_';
         } else {
-
-            //*(cPtr_v + count) = *(cPtr_c + i);
+            *(cPtr_v + i) << *(cPtr_c + i);
         }
-        count++;
-    }   
+        
+    }
+
+    // for (int i = 0; i <= 20; i++) {
+    //     // j = i % 5;
+        
+    //     // if (j == 0 && i != 0) {
+    //     //     *(cPtr_v + count) = '_';
+            
+    //     //     *(cPtr_v + count) = *(cPtr_c + i);
+            
+    //     //     //*(cPtr_v + count) = '_';
+    //     //     //*(cPtr_v + count+1) = *(cPtr_c + i+1);
+    //     // } else {
+    //     //     *(cPtr_v + count) = *(cPtr_c + i);
+            
+    //     //     //*(cPtr_v + count) = *(cPtr_c + i);
+    //     // }
+    //     // count++;
+        
+
+    // }   
+
     printf("%s", cPtr_v);
 }
 
