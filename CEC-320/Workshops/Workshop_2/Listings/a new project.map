@@ -7,10 +7,10 @@ Section Cross References
     workshop2.o(i.main) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
     workshop2.o(i.main) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
     workshop2.o(i.main) refers to _printf_dec.o(.text) for _printf_int_dec
-    workshop2.o(i.main) refers to workshop2.o(i.s1_add_uintN) for s1_add_uintN
     workshop2.o(i.main) refers to noretval__2printf.o(.text) for __2printf
+    workshop2.o(i.main) refers to workshop2.o(i.s1_add_uintN) for s1_add_uintN
     workshop2.o(i.main) refers to workshop2.o(i.s2_add_intN) for s2_add_intN
-    workshop2.o(i.main) refers to workshop2.o(.data) for pX1
+    workshop2.o(i.main) refers to workshop2.o(.data) for pIn
     retarget_io.o(i.ITM_ReceiveChar) refers to retarget_io.o(.data) for ITM_RxBuffer
     retarget_io.o(i._sys_open) refers to strcmpv7m.o(.text) for strcmp
     retarget_io.o(i._sys_write) refers to retarget_io.o(i.stdout_putchar) for stdout_putchar
@@ -621,13 +621,13 @@ Image Symbol Table
     i._sys_write                             0x0000129c   Section        0  retarget_io.o(i._sys_write)
     i.fputc                                  0x000012e2   Section        0  fputc.o(i.fputc)
     i.main                                   0x000012fc   Section        0  workshop2.o(i.main)
-    i.s1_add_uintN                           0x00001400   Section        0  workshop2.o(i.s1_add_uintN)
-    i.s2_add_intN                            0x00001424   Section        0  workshop2.o(i.s2_add_intN)
-    i.stdout_putchar                         0x0000144a   Section        0  retarget_io.o(i.stdout_putchar)
-    stdout_putchar                           0x0000144b   Thumb Code    12  retarget_io.o(i.stdout_putchar)
-    x$fpl$fpinit                             0x00001456   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x00001456   Number         0  fpinit.o(x$fpl$fpinit)
-    .constdata                               0x00001460   Section       23  retarget_io.o(.constdata)
+    i.s1_add_uintN                           0x0000153c   Section        0  workshop2.o(i.s1_add_uintN)
+    i.s2_add_intN                            0x00001560   Section        0  workshop2.o(i.s2_add_intN)
+    i.stdout_putchar                         0x00001586   Section        0  retarget_io.o(i.stdout_putchar)
+    stdout_putchar                           0x00001587   Thumb Code    12  retarget_io.o(i.stdout_putchar)
+    x$fpl$fpinit                             0x00001592   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x00001592   Number         0  fpinit.o(x$fpl$fpinit)
+    .constdata                               0x0000159c   Section       23  retarget_io.o(.constdata)
     .data                                    0x20000000   Section       12  workshop2.o(.data)
     .data                                    0x2000000c   Section        4  system_armcm4.o(.data)
     .data                                    0x20000010   Section        4  stdio_streams.o(.data)
@@ -826,17 +826,17 @@ Image Symbol Table
     _sys_seek                                0x00001271   Thumb Code    44  retarget_io.o(i._sys_seek)
     _sys_write                               0x0000129d   Thumb Code    70  retarget_io.o(i._sys_write)
     fputc                                    0x000012e3   Thumb Code    26  fputc.o(i.fputc)
-    main                                     0x000012fd   Thumb Code   142  workshop2.o(i.main)
-    s1_add_uintN                             0x00001401   Thumb Code    36  workshop2.o(i.s1_add_uintN)
-    s2_add_intN                              0x00001425   Thumb Code    38  workshop2.o(i.s2_add_intN)
-    _fp_init                                 0x00001457   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x0000145f   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x0000145f   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __stdin_name                             0x00001460   Data           7  retarget_io.o(.constdata)
-    __stdout_name                            0x00001467   Data           8  retarget_io.o(.constdata)
-    __stderr_name                            0x0000146f   Data           8  retarget_io.o(.constdata)
-    Region$$Table$$Base                      0x00001478   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00001498   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x000012fd   Thumb Code   286  workshop2.o(i.main)
+    s1_add_uintN                             0x0000153d   Thumb Code    36  workshop2.o(i.s1_add_uintN)
+    s2_add_intN                              0x00001561   Thumb Code    38  workshop2.o(i.s2_add_intN)
+    _fp_init                                 0x00001593   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x0000159b   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x0000159b   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __stdin_name                             0x0000159c   Data           7  retarget_io.o(.constdata)
+    __stdout_name                            0x000015a3   Data           8  retarget_io.o(.constdata)
+    __stderr_name                            0x000015ab   Data           8  retarget_io.o(.constdata)
+    Region$$Table$$Base                      0x000015b4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000015d4   Number         0  anon$$obj.o(Region$$Table)
     pIn                                      0x20000000   Data           4  workshop2.o(.data)
     pX0                                      0x20000004   Data           4  workshop2.o(.data)
     pX1                                      0x20000008   Data           4  workshop2.o(.data)
@@ -862,9 +862,9 @@ Memory Map of the image
 
   Image Entry point : 0x000003c1
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x000014b8, Max: 0x00040000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x000015f4, Max: 0x00040000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001498, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000015d4, Max: 0x00040000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -979,31 +979,31 @@ Memory Map of the image
     0x00001270   0x00001270   0x0000002c   Code   RO           59    i._sys_seek         retarget_io.o
     0x0000129c   0x0000129c   0x00000046   Code   RO           60    i._sys_write        retarget_io.o
     0x000012e2   0x000012e2   0x0000001a   Code   RO          277    i.fputc             c_w.l(fputc.o)
-    0x000012fc   0x000012fc   0x00000104   Code   RO            1    i.main              workshop2.o
-    0x00001400   0x00001400   0x00000024   Code   RO            2    i.s1_add_uintN      workshop2.o
-    0x00001424   0x00001424   0x00000026   Code   RO            3    i.s2_add_intN       workshop2.o
-    0x0000144a   0x0000144a   0x0000000c   Code   RO           61    i.stdout_putchar    retarget_io.o
-    0x00001456   0x00001456   0x0000000a   Code   RO          500    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x00001460   0x00001460   0x00000017   Data   RO           62    .constdata          retarget_io.o
-    0x00001477   0x00001477   0x00000001   PAD
-    0x00001478   0x00001478   0x00000020   Data   RO          593    Region$$Table       anon$$obj.o
+    0x000012fc   0x000012fc   0x00000240   Code   RO            1    i.main              workshop2.o
+    0x0000153c   0x0000153c   0x00000024   Code   RO            2    i.s1_add_uintN      workshop2.o
+    0x00001560   0x00001560   0x00000026   Code   RO            3    i.s2_add_intN       workshop2.o
+    0x00001586   0x00001586   0x0000000c   Code   RO           61    i.stdout_putchar    retarget_io.o
+    0x00001592   0x00001592   0x0000000a   Code   RO          500    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x0000159c   0x0000159c   0x00000017   Data   RO           62    .constdata          retarget_io.o
+    0x000015b3   0x000015b3   0x00000001   PAD
+    0x000015b4   0x000015b4   0x00000020   Data   RO          593    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x00001498, Size: 0x00001180, Max: 0x00010000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x000015d4, Size: 0x00001180, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00001498   0x0000000c   Data   RW            6    .data               workshop2.o
-    0x2000000c   0x000014a4   0x00000004   Data   RW          153    .data               system_armcm4.o
-    0x20000010   0x000014a8   0x00000004   Data   RW          249    .data               c_w.l(stdio_streams.o)
-    0x20000014   0x000014ac   0x00000004   Data   RW          250    .data               c_w.l(stdio_streams.o)
-    0x20000018   0x000014b0   0x00000004   Data   RW          251    .data               c_w.l(stdio_streams.o)
-    0x2000001c   0x000014b4   0x00000004   Data   RW          545    .data               c_w.l(heapauxa.o)
+    0x20000000   0x000015d4   0x0000000c   Data   RW            6    .data               workshop2.o
+    0x2000000c   0x000015e0   0x00000004   Data   RW          153    .data               system_armcm4.o
+    0x20000010   0x000015e4   0x00000004   Data   RW          249    .data               c_w.l(stdio_streams.o)
+    0x20000014   0x000015e8   0x00000004   Data   RW          250    .data               c_w.l(stdio_streams.o)
+    0x20000018   0x000015ec   0x00000004   Data   RW          251    .data               c_w.l(stdio_streams.o)
+    0x2000001c   0x000015f0   0x00000004   Data   RW          545    .data               c_w.l(heapauxa.o)
     0x20000020        -       0x00000054   Zero   RW          246    .bss                c_w.l(stdio_streams.o)
     0x20000074        -       0x00000054   Zero   RW          247    .bss                c_w.l(stdio_streams.o)
     0x200000c8        -       0x00000054   Zero   RW          248    .bss                c_w.l(stdio_streams.o)
     0x2000011c        -       0x00000060   Zero   RW          441    .bss                c_w.l(libspace.o)
-    0x2000017c   0x000014b8   0x00000004   PAD
+    0x2000017c   0x000015f4   0x00000004   PAD
     0x20000180        -       0x00000c00   Zero   RW          141    HEAP                startup_armcm4.o
     0x20000d80        -       0x00000400   Zero   RW          140    STACK               startup_armcm4.o
 
@@ -1018,10 +1018,10 @@ Image component sizes
        388         30         23          0          0       6922   retarget_io.o
         56         10        960          0       4096       1272   startup_armcm4.o
         48         18          0          4          0        755   system_armcm4.o
-       334        118          0         12          0       6766   workshop2.o
+       650        290          0         12          0       6846   workshop2.o
 
     ----------------------------------------------------------------------
-       828        176       1016         16       4096      15715   Object Totals
+      1144        348       1016         16       4096      15795   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          1          0          0          0   (incl. Padding)
 
@@ -1110,15 +1110,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4256        402       1016         32       4448      16559   Grand Totals
-      4256        402       1016         32       4448      16559   ELF Image Totals
-      4256        402       1016         32          0          0   ROM Totals
+      4572        574       1016         32       4448      16639   Grand Totals
+      4572        574       1016         32       4448      16639   ELF Image Totals
+      4572        574       1016         32          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 5272 (   5.15kB)
+    Total RO  Size (Code + RO Data)                 5588 (   5.46kB)
     Total RW  Size (RW Data + ZI Data)              4480 (   4.38kB)
-    Total ROM Size (Code + RO Data + RW Data)       5304 (   5.18kB)
+    Total ROM Size (Code + RO Data + RW Data)       5620 (   5.49kB)
 
 ==============================================================================
 

@@ -28,24 +28,27 @@ int *pX0 = (int *)0x20010004U;   // X0 and X1 should be N-bit integers.
 int *pX1 = (int *)0x20010008U;
     
 int main(void) {
-    enum progState{State1 = 1, State2, State3, State4};
+    enum progState{State1 = 1, State2 = 2, State3 = 3, State4 = 4};
     enum progState cState = State1;         // Current State
     bool dataReady = false;
     bool cFlg, vFlg;
     int result;
     
     while (1) {
-//			dataReady = false;
-//			// Check if the data are legitimate
-//			while (!dataReady) {
-//				printf("Halt program here to provide correct update of data\n");
-//				printf("In should be -1, 0, and 1 and ");
-//				printf("X0 and X1 should be N-bit SIGNED integers\n");
-//				if (((-1 <= *pIn) && (*pIn <= 1)) && ((MIN_I <= *pX0) && (*pX0 <= MAX_I)) && ((MIN_I <= *pX1) && (*pX1 <= MAX_I))) {
-//						dataReady = true;
-//				}
-//			}
-//			printf("Your input: In = %d, X0 = %d, X1 = %d \n", *pIn, *pX0, *pX1);
+			dataReady = false;
+			// Check if the data are legitimate
+			while (!dataReady) {
+				printf("Halt program here to provide correct update of data\n");
+				printf("In should be -1, 0, and 1 and ");
+				printf("X0 and X1 should be N-bit SIGNED integers\n");
+				*pIn = 1;
+				*pX0 = -15;
+				*pX1 = -14;
+				if (((-1 <= *pIn) && (*pIn <= 1)) && ((MIN_I <= *pX0) && (*pX0 <= MAX_I)) && ((MIN_I <= *pX1) && (*pX1 <= MAX_I))) {
+						dataReady = true;
+				}
+			}
+			printf("Your input: In = %d, X0 = %d, X1 = %d \n", *pIn, *pX0, *pX1);
 			
 			switch (cState) {
 				case State1: 
