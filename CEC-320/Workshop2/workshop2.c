@@ -22,53 +22,62 @@ int s4_sub_intN(int x0, int x1, bool *v_flg);
  
 // We use the following three pointers to access data, which can be changed
 // when the program pauses. We need to make sure to have the RAM set up
-// for these addresses. 
+// for these addresses.
+
 int *pIn = (int *)0x20010000U;   // the value of In should be -1, 0, or 1.
 int *pX0 = (int *)0x20010004U;   // X0 and X1 should be N-bit integers.
 int *pX1 = (int *)0x20010008U;
+
     
 int main(void) {
-    enum progState{State1 = 1, State2 = 2, State3 = 3, State4 = 4};
+    enum progState{State1 = 1, State2, State3, State4};
     enum progState cState = State1;         // Current State
     bool dataReady = false;
     bool cFlg, vFlg;
     int result;
     
     while (1) {
-			dataReady = false;
-			// Check if the data are legitimate
-			while (!dataReady) {
-				printf("Halt program here to provide correct update of data\n");
-				printf("In should be -1, 0, and 1 and ");
-				printf("X0 and X1 should be N-bit SIGNED integers\n");
-				*pIn = 1;
-				*pX0 = -15;
-				*pX1 = -14;
-				if (((-1 <= *pIn) && (*pIn <= 1)) && ((MIN_I <= *pX0) && (*pX0 <= MAX_I)) && ((MIN_I <= *pX1) && (*pX1 <= MAX_I))) {
-						dataReady = true;
-				}
-			}
-			printf("Your input: In = %d, X0 = %d, X1 = %d \n", *pIn, *pX0, *pX1);
-			
-			switch (cState) {
-				case State1: 
-					result = s1_add_uintN(*pX0, *pX1, &cFlg);
-					printf("State = %d, rslt = %d, Cflg = %d\n", cState, result, cFlg);
-					cState += *pIn;
-					if (cState < State1) cState += State4;
-					break;
-				case State2: 
-					result = s2_add_intN(*pX0, *pX1, &vFlg);
-					printf("State = %d, rslt = %d, Vflg = %d\n", cState, result, vFlg);
-					cState += *pIn;
-					break;
-				case State3: 
-	
-				case State4: 
-	
-				default:
-					printf("Error with the program state\n");
-			}
+        dataReady = false;
+        // Check if the data are legitimate
+        while (!dataReady) {
+            printf("Halt program here to provide correct update of data\n");
+            printf("In should be -1, 0, and 1 and ");
+            printf("X0 and X1 should be N-bit SIGNED integers\n");
+            if (((-1 <= *pIn) && (*pIn <= 1)) && ((MIN_I <= *pX0) && (*pX0 <= MAX_I)) && ((MIN_I <= *pX1) && (*pX1 <= MAX_I))) {
+                dataReady = true;
+            }
+        }
+        printf("Your input: In = %d, X0 = %d, X1 = %d \n", *pIn, *pX0, *pX1);
+        
+        switch (cState) {
+          case State1: 
+            result = s1_add_uintN(*pX0, *pX1, &cFlg);
+            printf("State = %d, rslt = %d, Cflg = %d\n", cState, result, cFlg);
+            cState += *pIn;
+            if (cState < State1) cState += State4;
+            break;
+					
+          case State2: 
+            result = s2_add_intN(*pX0, *pX1, &vFlg);
+            printf("State = %d, rslt = %d, Vflg = %d\n", cState, result, vFlg);
+            cState += *pIn;
+            break;
+					
+          case State3: 
+			result = s3_sub_uintN(*pX0, *pX1, &cFlg);
+            printf("State = %d, rslt = %d, Cflg = %d\n", cState, result, cFlg);
+            cState += *pIn;
+						break;
+					
+          case State4: 
+			result = s4_sub_intN(*pX0, *pX1, &vFlg);
+            printf("State = %d, rslt = %d, Vflg = %d\n", cState, result, vFlg);
+            cState += *pIn;
+            break;
+					
+          default:
+            printf("Error with the program state\n");
+        }
     }
 }
 
@@ -100,9 +109,34 @@ int  s2_add_intN(int x0, int x1, bool *v_flg) {
 }
 
 int  s3_sub_uintN(int x0, int x1, bool *c_flg) {
-    return 0;
+    int result = x0 - x1;	
+	
+		if(result > x0){
+			*c_flg = 0;//1
+		} else {
+			*c_flg = 1;//0
+		}
+		
+		printf("%u - %u = %u\n", x0, x1, result);
+		//printf("The result is %u, and the C = %d\n", result, *c_flg);
+		return result;
 }
         
 int  s4_sub_intN(int x0, int x1, bool *v_flg) {
-    return 0;
+    int result = x0 - x1;
+	
+	if(x0 < 0 && x1 > 0 && result > 0){
+		*v_flg = 1;
+	} else if(x0 > 0 && x1 < 0 && result < 0) {
+		*v_flg = 1;
+	} else {
+		*v_flg = 0;
+	}
+		
+		
+		printf("%i - %i = %i\n", x0, x1, result);
+
+		//printf("The result is %i, and the V = %d\n", result, *v_flg);
+		
+		return result;
 }
