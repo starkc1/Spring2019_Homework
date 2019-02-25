@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\a new project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\a new project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Feb 25 09:27:52 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Feb 25 14:37:54 2019
 <BR><P>
 <H3>Maximum Stack Usage =          8 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -350,8 +350,10 @@ Global Symbols
 <P><STRONG><a name="[16]"></a>SystemInit</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, system_armcm4.o(i.SystemInit))
 <BR>[Address Reference Count : 1]<UL><LI> startup_armcm4.o(.text)
 </UL>
-<P><STRONG><a name="[22]"></a>main</STRONG> (Thumb, 292 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Calls]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task15
+<P><STRONG><a name="[22]"></a>main</STRONG> (Thumb, 264 bytes, Stack size 8 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = main
+</UL>
+<BR>[Calls]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task15
 <LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task14
 <LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task13
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task12

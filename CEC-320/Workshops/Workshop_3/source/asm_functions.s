@@ -28,7 +28,7 @@ task10  PROC
 task10_loop
         CMP  r2, r1                 ; test = r2 - r1
         BGE  task10_end             ; if test >= 0, then branch to task10_end    
-        MOV  r3, r2, LSL #4         ; r3 <- r2 * 4
+        MOV  r3, r2, LSL #2         ; r3 <- r2 * 4
         SUB  r3, #15                ; r3 <- r3 - 15
         STRB r3, [r0, r2]           ; r3 -> mem[r0 + r2] or r3 -> mem[r0 + i]
         ADD  r2, #1                 ; r2 <- r2 + 1
@@ -41,6 +41,7 @@ task10_end
 ; run-time environment for the caller. You need to POP them up at the exit of the code.
 
 task11  PROC
+		
         BX   lr     
         ENDP
 

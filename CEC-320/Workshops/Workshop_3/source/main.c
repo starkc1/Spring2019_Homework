@@ -12,7 +12,6 @@ extern void task13(void);
 extern void task14(void);
 extern void task15(void);
 
-// Global variable
 // Pointers for the C version.
 int8_t      *gPtrArray10c = (int8_t *)   (MY_ARRAY_BASE + 0x00);
 uint8_t     *gPtrArray11c = (uint8_t *)  (MY_ARRAY_BASE + 0x40);
@@ -32,9 +31,9 @@ int8_t gVar1 = 8;
 
 int main(void) {   
     // Task 10. Register offset-based addressing---a simple example.
-    for (int i = 0; i < gVar1; i++) {
-        *(gPtrArray10c + i) = (int8_t)(i*4 - 15); // i is saved in a register         
-    }
+//    for (int i = 0; i < gVar1; i++) {
+//        *(gPtrArray10c + i) = (int8_t)(i*4 - 15); // i is saved in a register         
+//    }
     task10();       // task10: perform the above task using assembly 
 
     // Task 11. Register offset-based addressing---another simple example.
