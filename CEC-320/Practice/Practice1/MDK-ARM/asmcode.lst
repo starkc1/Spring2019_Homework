@@ -1,0 +1,84 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             asmcode, CODE, READONLY
+    2 00000000                 EXPORT           read_port
+    3 00000000                 EXPORT           set_port
+    4 00000000                 EXPORT           clear_port
+    5 00000000         
+    6 00000000                 ALIGN
+    7 00000000         
+    8 00000000         read_port
+                               PROC
+    9 00000000 6802            LDR              r2, [r0]
+   10 00000002 EA01 0002       AND              r0, r1, r2
+   11 00000006 4770            BX               lr
+   12 00000008                 ENDP
+   13 00000008         
+   14 00000008         set_port
+                               PROC
+   15 00000008 6802            LDR              r2, [r0]
+   16 0000000A EA42 0201       ORR              r2, r1
+   17 0000000E 6002            STR              r2, [r0]
+   18 00000010 4770            BX               lr
+   19 00000012                 ENDP
+   20 00000012         
+   21 00000012         clear_port
+                               PROC
+   22 00000012 6802            LDR              r2, [r0]
+   23 00000014 EA22 0201       BIC              r2, r1
+   24 00000018 6002            STR              r2, [r0]
+   25 0000001A 4770            BX               lr
+   26 0000001C                 ENDP
+   27 0000001C         
+   28 0000001C                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=practice1\asmcode.d -opractice1\asmcode.o -I.\RTE\_Practice1 -I
+C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\Ke
+il\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include --predefine="_
+_EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SE
+TA 526" --predefine="_RTE_ SETA 1" --predefine="STM32L476xx SETA 1" --list=asmc
+ode.lst asmcode.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+asmcode 00000000
+
+Symbol: asmcode
+   Definitions
+      At line 1 in file asmcode.s
+   Uses
+      None
+Comment: asmcode unused
+clear_port 00000012
+
+Symbol: clear_port
+   Definitions
+      At line 21 in file asmcode.s
+   Uses
+      At line 4 in file asmcode.s
+Comment: clear_port used once
+read_port 00000000
+
+Symbol: read_port
+   Definitions
+      At line 8 in file asmcode.s
+   Uses
+      At line 2 in file asmcode.s
+Comment: read_port used once
+set_port 00000008
+
+Symbol: set_port
+   Definitions
+      At line 14 in file asmcode.s
+   Uses
+      At line 3 in file asmcode.s
+Comment: set_port used once
+4 symbols
+340 symbols in table
