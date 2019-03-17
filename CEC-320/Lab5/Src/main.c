@@ -122,14 +122,14 @@ int main(void)
 	extern void set_a_bit_of_a_port(__IO uint32_t *pODR, uint32_t pinMask);
 	extern void clear_a_bit_of_a_port(__IO uint32_t *pODR, uint32_t pinMask);
 	
-	#define LD_R_ON   set_a_bit_of_a_port(&(GPIOB -> ODR), LD_R_Pin)// Add the appropriate function here 
-	#define LD_G_ON   set_a_bit_of_a_port(&(GPIOE -> ODR), LD_G_Pin)// Add the appropriate function here 
-	#define LD_R_OFF  clear_a_bit_of_a_port(&(GPIOB -> ODR), LD_R_Pin)// Add the appropriate function here 
-	#define LD_G_OFF  clear_a_bit_of_a_port(&(GPIOE -> ODR), LD_G_Pin)// Add the appropriate function here 
+	#define LD_R_ON   set_a_bit_of_a_port(&(GPIOB -> ODR), LD_R_Pin)// set the Red LED to on
+	#define LD_G_ON   set_a_bit_of_a_port(&(GPIOE -> ODR), LD_G_Pin)// set the Green LED to on
+	#define LD_R_OFF  clear_a_bit_of_a_port(&(GPIOB -> ODR), LD_R_Pin)// set the Red LED to off
+	#define LD_G_OFF  clear_a_bit_of_a_port(&(GPIOE -> ODR), LD_G_Pin)// set the Green LED to off 
 	
-	#define JOY_C_IS_PRESSED  read_a_bit_of_a_port(&(GPIOA -> IDR), JOY_C_Pin)// Add the appropriate function here 
-	#define JOY_L_IS_PRESSED  read_a_bit_of_a_port(&(GPIOA -> IDR), JOY_L_Pin)// Add the appropriate function here 
-	#define JOY_R_IS_PRESSED  read_a_bit_of_a_port(&(GPIOA -> IDR), JOY_R_Pin)// Add the appropriate function here 
+	#define JOY_C_IS_PRESSED  read_a_bit_of_a_port(&(GPIOA -> IDR), JOY_C_Pin)// Read the Center Joystick press 
+	#define JOY_L_IS_PRESSED  read_a_bit_of_a_port(&(GPIOA -> IDR), JOY_L_Pin)// Read the Left Joystick press 
+	#define JOY_R_IS_PRESSED  read_a_bit_of_a_port(&(GPIOA -> IDR), JOY_R_Pin)// Read the Right Joystick press 
 	
 	enum progState{State1 = 1, State2, State3, State4};
 	enum progState currentState = State1;
@@ -148,7 +148,7 @@ int main(void)
 		}
 		
 		switch(currentState) {
-			case State1:
+			case State1: //State 1, LEDs should alternate between red and green
 				if (stateChanged) {
 					printf("Press the center key to go to State2.\n\r");
 					stateChanged = false;
@@ -171,7 +171,7 @@ int main(void)
 				ledON = !ledON;
 				break;
 				
-			case State2:
+			case State2: //State 2, LEDs should be both off
 				if (stateChanged) {
 					printf("Press the center key to go to State1.\n\rPress the Left Key to go to State3.\n\rPress the Right Key to go State4\n\r");
 					stateChanged = false;
@@ -192,7 +192,7 @@ int main(void)
 				LD_G_OFF;
 				break;
 			
-			case State3:
+			case State3: //State 3, LEDs should be just the Red LED blinking with Green LED off
 				if (stateChanged) {
 					printf("Press the center key to go to State2.\n\rPress the Right Key to go State4\n\r");
 					stateChanged = false;
@@ -217,7 +217,7 @@ int main(void)
 				ledON = !ledON;
 				break;
 				
-			case State4:
+			case State4: //State 4, LEDs should just be the Green LED blinking, with the Red LED off
 				if (stateChanged) {
 					printf("Press the center key to go to State2.\n\rPress the Left Key to go State3\n\r");
 					stateChanged = false;
