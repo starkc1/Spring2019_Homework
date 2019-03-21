@@ -3,21 +3,52 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-typedef struct {
-    uint16_t my_id;
-    uint32_t my_id2;
-} MyType;
 
-bool need_to_print = true;
-MyType myid;
-MyType *p_id = &myid;
-  
-int main(void) {
-    myid.my_id = 1234;
-    myid.my_id2 = myid.my_id * myid.my_id;
-    if (need_to_print) {
-        printf("The values of my_ids are %d and %d, respectively.\n", p_id->my_id, p_id->my_id2);
-    }
-
-    while (1);
+uint32_t test(uint32_t x) {
+	uint32_t y, z;
+	uint32_t count = x >> 31;
+	printf("initial count %d\n", count);
+	while (x) {
+		y = x << 2;
+		z = y >> 31;
+		if (x<<1 >y)
+			count += z + 1;
+		else 
+			count += z;
+		
+		x=y;
+		
+		printf("x = %d\n", x);
+		printf("y = %d\n", y);
+		printf("z = %d\n", z);
+		printf("count = %d\n\n", count);
+	}
+	
+	return count;
 }
+
+void test2(uint32_t x) {
+	uint32_t count = x >> 31;
+	uint32_t z;
+	printf("initial r1 %d\n", count);
+	
+	while(x) {
+		printf("r0 = %d\n", x);
+		x = x << 2;
+		z = x >> 31;
+		count = count + z;
+		
+		printf("r0 = %d\n", x);
+		printf("r1 = %d\n\n", count);
+	}
+	printf("r0 = %d\n", x);
+}
+
+
+int main(void) {
+		
+	
+	test2(0x9D000000);
+}
+
+

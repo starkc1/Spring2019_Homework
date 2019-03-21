@@ -1,0 +1,54 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             asm_code, CODE, READONLY ; Defi
+                                                            ne the program area
+                                                            
+    2 00000000         
+    3 00000000         ; Export functions defined in this file. These functions
+                        need to be declared
+    4 00000000         ; in the file calling them.
+    5 00000000         
+    6 00000000         
+    7 00000000         
+    8 00000000                 ALIGN                        ; Align the data in
+                                                             the boundary of 4 
+                                                            bytes.
+    9 00000000         
+   10 00000000         
+   11 00000000         
+   12 00000000         
+   13 00000000         
+   14 00000000         
+   15 00000000         
+   16 00000000         
+   17 00000000         
+   18 00000000         
+   19 00000000         
+   20 00000000         
+   21 00000000                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\asm_code.d -o.\objects\asm_code.o -I.\RTE\_Target---s
+im -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PA
+CK\ARM\CMSIS\5.4.0\Device\ARM\ARMCM4\Include --predefine="__EVAL SETA 1" --pred
+efine="__UVISION_VERSION SETA 526" --predefine="_RTE_ SETA 1" --predefine="ARMC
+M4_FP SETA 1" --list=.\listings\asm_code.lst asm_code.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+asm_code 00000000
+
+Symbol: asm_code
+   Definitions
+      At line 1 in file asm_code.s
+   Uses
+      None
+Comment: asm_code unused
+1 symbol
+335 symbols in table
