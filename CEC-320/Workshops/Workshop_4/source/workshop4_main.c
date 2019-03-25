@@ -60,7 +60,7 @@ int main(void) {
     for (i = 0; i < M; i++) {
         printf("%4.2f ", Qmpn2float(*pint3++, n)); 
     }
-    printf("\n");
+    printf("\n\n");
     
 // Task 2: while loop for C and asm multiplication
     preal1 = real_array1;  preal2 = real_array2;  preal3 = real_array3;
@@ -80,7 +80,7 @@ int main(void) {
     for (i = 0; i < M; i++) {
         printf("%4.2f ", Qmpn2float(*pint3++, n)); 
     }
-    printf("\n");
+    printf("\n\n");
     
     // Task 3: do-while loop for C and asm division
     preal1 = real_array1;  preal2 = real_array2;  preal3 = real_array3;
@@ -100,7 +100,7 @@ int main(void) {
     for (i = 0; i < M; i++) {
         printf("%4.2f ", Qmpn2float(*pint3++, n)); 
     }
-    printf("\n");
+    printf("\n\n");
 
     // Task 4: do-while loop for C and asm modulo operation
     pint1 = int_array1;    pint2 = int_array2;    pint3 = int_array3;
@@ -120,7 +120,7 @@ int main(void) {
     for (i = 0; i < M; i++) {
         printf("%4.2f ", Qmpn2float(*pint3++, n)); 
     }
-    printf("\n");
+    printf("\n\n");
 
     while (1);
 }
