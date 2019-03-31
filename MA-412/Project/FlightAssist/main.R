@@ -16,14 +16,56 @@ ui <- dashboardPage(
         "Month",
         h4("Select Month"),
         choices = list(
-          "Jan" = 1,
-          "Feb" = 2
+          "Jan" = "01",
+          "Feb" = "02",
+          "Mar" = "03",
+          "Apr" = "04",
+          "May" = "05",
+          "Jun" = "06",
+          "Jul" = "07",
+          "Aug" = "08",
+          "Sep" = "09",
+          "Oct" = "10",
+          "Nov" = "11",
+          "Dec" = "12"
         )
       ),
-      numericInput(
-        "day",
+      selectInput(
+        "Day",
         h4("Select Day"),
-        value = 1
+        choices = list(
+          "01",
+          "02",
+          "03",
+          "04",
+          "05",
+          "06",
+          "07",
+          "08",
+          "09",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "26",
+          "27",
+          "28",
+          "29",
+          "30",
+          "31"
+        )
       )
     ),
     wellPanel(
@@ -40,12 +82,12 @@ ui <- dashboardPage(
       textInput(
         "origin",
         h4("Origin Airport"),
-        value = "Ex: DFW or LAX"
+        placeholder = "Enter Airport Code"
       ),
       textInput(
         "dest",
         h4("Destination Airport"),
-        value = "Ex: DFW or LAX"
+        placeholder = "Enter Airport Code"
       )
     ),
     actionButton(
@@ -58,15 +100,19 @@ ui <- dashboardPage(
       tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
     ),
     fluidRow(
-      
     )
   )
 )
 
 server <- function(input, output, session) {
-  #df = read.xlsx("data.xlsx", sheet = 1, colNames = TRUE, detectDates = TRUE)
-  #filtered <- filter(df, Origin == "DFW", Date == "2017-01-04", Dest == "MCO")
-  #print(filtered)
+  observeEvent(input$search, {
+    df = read.xlsx("data.xlsx", sheet = 1, colNames = TRUE, detectDates = TRUE)
+    
+    filtered <- filter(df, Origin == input$origin, Dest == input$dest, Date == paste("2017-",input$Month,"-",input$Day,"-", sep=""))
+    #filtered <- filter(df, Origin == "DFW", Date == "2017-01-04", Dest == "MCO")
+    print(filtered)
+  })
+
 }
 
 shinyApp(ui, server)

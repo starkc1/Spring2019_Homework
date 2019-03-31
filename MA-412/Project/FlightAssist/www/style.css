@@ -2,12 +2,25 @@
   background-color: transparent; 
   border: 0;
   text-align: center;
+  padding: 1px;
 }
 
 .form-group {
   margin-bottom: 5px;
 }
 
-.shiny-input-container {
+section.sidebar .shiny-input-container{
   padding-top: 0;
+}
+
+section.sidebar .shiny-bound-input.action-button {
+  margin: auto;
+}
+
+.btn {
+  width: 90%;
+  background-color: #3c8dbc;
+  border: 0;
+  border-radius: 0;
+  color: #FFF;
 }
