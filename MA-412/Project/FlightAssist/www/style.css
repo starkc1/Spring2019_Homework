@@ -1,0 +1,13 @@
+.well {
+  background-color: transparent; 
+  border: 0;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+.shiny-input-container {
+  padding-top: 0;
+}
