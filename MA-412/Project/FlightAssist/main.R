@@ -104,7 +104,7 @@ ui <- dashboardPage(
         title = "Flight Delay/Cancel Probabilty",
         solidHeader = TRUE,
         status = "primary",
-        h3("Total Delay")
+        textOutput("delay")
       ),
       box(
         title = "Flight Fares",
@@ -137,8 +137,17 @@ server <- function(input, output, session) {
     
     df = read.xlsx("DelayCancelData.xlsx", sheet = 1, colNames = TRUE, detectDates = TRUE)
     
-    filtered <- filter(df, Carrier == input$Airline, Origin == input$origin, Dest == input$dest, Date == paste("2017-",input$Month,"-",input$Day,"-", sep="") | Date == paste("2018-",input$Month,"-",input$Day,"-", sep=""))
+    filtered <- data.frame(filter(
+      df, 
+      Carrier == input$Airline, 
+      Origin == input$origin, 
+      Dest == input$dest, 
+      Date == paste("2017-",input$Month,"-",input$Day,"-", sep="") | Date == paste("2018-",input$Month,"-",input$Day,"-", sep="")
+    ))
     
+    averageDelay <- mean(as.numeric(filtered$Delay))
+    #print(averageDelay)
+    output$delay <- renderText(paste("Total Delay: ", averageDelay, sep=""))
     
     #output$table <- renderDataTable(filtered)
   })
