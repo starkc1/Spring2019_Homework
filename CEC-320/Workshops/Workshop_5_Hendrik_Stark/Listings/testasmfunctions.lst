@@ -1,0 +1,98 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             testASMFunctions, CODE, READONL
+Y
+    2 00000000         
+    3 00000000                 EXPORT           swap_asm_1
+    4 00000000                 EXPORT           swap_asm_2
+    5 00000000                 EXPORT           swap_asm_3
+    6 00000000                 EXPORT           rank_descending_asm
+    7 00000000         
+    8 00000000                 ALIGN
+    9 00000000         
+   10 00000000         swap_asm_1
+                               PROC
+   11 00000000         
+   12 00000000         
+   13 00000000         
+   14 00000000                 ENDP
+   15 00000000         
+   16 00000000         swap_asm_2
+                               PROC
+   17 00000000         
+   18 00000000         
+   19 00000000                 ENDP
+   20 00000000         
+   21 00000000         swap_asm_3
+                               PROC
+   22 00000000         
+   23 00000000         
+   24 00000000                 ENDP
+   25 00000000         
+   26 00000000         rank_descending_asm
+                               PROC
+   27 00000000         
+   28 00000000         
+   29 00000000                 ENDP
+   30 00000000         
+   31 00000000         
+   32 00000000                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\testasmfunctions.d -o.\objects\testasmfunctions.o -I.
+\RTE\_Target---sim -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC
+:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\Device\ARM\ARMCM4\Include --predefine="__EVA
+L SETA 1" --predefine="__UVISION_VERSION SETA 526" --predefine="_RTE_ SETA 1" -
+-predefine="ARMCM4_FP SETA 1" --list=.\listings\testasmfunctions.lst testASMFun
+ctions.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+rank_descending_asm 00000000
+
+Symbol: rank_descending_asm
+   Definitions
+      At line 26 in file testASMFunctions.s
+   Uses
+      At line 6 in file testASMFunctions.s
+Comment: rank_descending_asm used once
+swap_asm_1 00000000
+
+Symbol: swap_asm_1
+   Definitions
+      At line 10 in file testASMFunctions.s
+   Uses
+      At line 3 in file testASMFunctions.s
+Comment: swap_asm_1 used once
+swap_asm_2 00000000
+
+Symbol: swap_asm_2
+   Definitions
+      At line 16 in file testASMFunctions.s
+   Uses
+      At line 4 in file testASMFunctions.s
+Comment: swap_asm_2 used once
+swap_asm_3 00000000
+
+Symbol: swap_asm_3
+   Definitions
+      At line 21 in file testASMFunctions.s
+   Uses
+      At line 5 in file testASMFunctions.s
+Comment: swap_asm_3 used once
+testASMFunctions 00000000
+
+Symbol: testASMFunctions
+   Definitions
+      At line 1 in file testASMFunctions.s
+   Uses
+      None
+Comment: testASMFunctions unused
+5 symbols
+339 symbols in table

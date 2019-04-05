@@ -2,10 +2,11 @@ library(shiny)
 library(shinydashboard)
 library(dplyr)
 library(openxlsx)
+library(shinycssloaders)
+library(shinyjs)
 
 
 ui <- dashboardPage(
-
   dashboardHeader(
     title = "Vacation Planner"
   ),
@@ -99,26 +100,40 @@ ui <- dashboardPage(
     tags$head(
       tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
     ),
+    useShinyjs(),
     fluidRow(
-      box(
-        title = "Flight Delay/Cancel Probabilty",
-        solidHeader = TRUE,
-        status = "primary",
-        textOutput("delay")
+      div(
+        id = "start",
+        h1("To Begin, Run A Search")
       ),
-      box(
-        title = "Flight Fares",
-        solidHeader = TRUE,
-        status = "primary",
-        h3("Average Fare")
+      hidden(
+        div(
+          id = "main",
+          box(
+            title = "Flight Delay/Cancel Probabilty",
+            solidHeader = TRUE,
+            status = "primary",
+            withSpinner(textOutput("delay"), type = 3, color = "#3c8dbc", color.background = "#FFF")
+          ),
+          box(
+            title = "Flight Fares",
+            solidHeader = TRUE,
+            status = "primary",
+            h3("Average Fare")
+          )
+        )
       )
-      #dataTableOutput("table")
+      
+      #,dataTableOutput("table")
     )
   )
 )
 
 server <- function(input, output, session) {
   observeEvent(input$search, {
+    hide("start")
+    show("main")
+    
     sheetNum <- switch(
       input$Month,
       "01" = 1,
@@ -145,9 +160,9 @@ server <- function(input, output, session) {
       Date == paste("2017-",input$Month,"-",input$Day,"-", sep="") | Date == paste("2018-",input$Month,"-",input$Day,"-", sep="")
     ))
     
-    averageDelay <- mean(as.numeric(filtered$Delay))
-    #print(averageDelay)
-    output$delay <- renderText(paste("Total Delay: ", averageDelay, sep=""))
+    averageDelay <- mean(as.numeric(filtered$Delay), na.rm = TRUE)
+    print(averageDelay)
+    output$delay <- renderText({paste("Total Delay: ", averageDelay, sep="")})
     
     #output$table <- renderDataTable(filtered)
   })
