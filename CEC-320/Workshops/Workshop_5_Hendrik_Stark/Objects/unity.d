@@ -1,0 +1,10 @@
+.\objects\unity.o: lib\unity\unity.c
+.\objects\unity.o: lib\unity\unity.h
+.\objects\unity.o: lib\unity\unity_internals.h
+.\objects\unity.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\setjmp.h
+.\objects\unity.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\unity.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\unity.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\unity.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\objects\unity.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
+.\objects\unity.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

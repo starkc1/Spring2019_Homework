@@ -132,7 +132,7 @@ ui <- dashboardPage(
 server <- function(input, output, session) {
   observeEvent(input$search, {
     hide("start")
-    show("main")
+    show("main") 
     
     sheetNum <- switch(
       input$Month,
