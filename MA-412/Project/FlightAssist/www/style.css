@@ -24,3 +24,11 @@ section.sidebar .shiny-bound-input.action-button {
   border-radius: 0;
   color: #FFF;
 }
+
+#content {
+  height: 200px;
+}
+
+.fa-spin {
+  transform: rotate(360deg);
+}

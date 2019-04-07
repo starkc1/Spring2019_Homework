@@ -6,6 +6,7 @@ library(shinycssloaders)
 library(shinyjs)
 
 
+
 ui <- dashboardPage(
   dashboardHeader(
     title = "Vacation Planner"
@@ -112,8 +113,12 @@ ui <- dashboardPage(
           box(
             title = "Flight Delay/Cancel Probabilty",
             solidHeader = TRUE,
-            status = "primary",
-            withSpinner(textOutput("delay"), type = 3, color = "#3c8dbc", color.background = "#FFF")
+            status = "primary", 
+            div(
+              id = "content",
+              #withSpinner(tableOutput("delayData"), type = 3, color = "#3c8dbc", color.background = "#FFF")
+              tableOutput("delayData")
+            )
           ),
           box(
             title = "Flight Fares",
@@ -123,16 +128,21 @@ ui <- dashboardPage(
           )
         )
       )
-      
       #,dataTableOutput("table")
     )
   )
 )
 
 server <- function(input, output, session) {
+  
+  firstRun = TRUE;
+  
+  
   observeEvent(input$search, {
+
     hide("start")
-    show("main") 
+    show("main")
+
     
     sheetNum <- switch(
       input$Month,
@@ -160,11 +170,14 @@ server <- function(input, output, session) {
       Date == paste("2017-",input$Month,"-",input$Day,"-", sep="") | Date == paste("2018-",input$Month,"-",input$Day,"-", sep="")
     ))
     
-    averageDelay <- mean(as.numeric(filtered$Delay), na.rm = TRUE)
-    print(averageDelay)
-    output$delay <- renderText({paste("Total Delay: ", averageDelay, sep="")})
+    output$delayData <- renderTable({
+      data.frame(
+        Data = c(
+          mean(as.numeric(filtered$Delay), na.rm = TRUE)
+        )
+      )
+    })
     
-    #output$table <- renderDataTable(filtered)
   })
 
 }
