@@ -95,6 +95,15 @@ ui <- dashboardPage(
     actionButton(
       "search",
       "Search"
+    ),
+    hidden(
+      div(
+        id="loading",
+        tags$img(
+          src="spinner3.gif",
+          id="spinner"
+        )
+      )
     )
   ),
   dashboardBody(
@@ -142,7 +151,7 @@ server <- function(input, output, session) {
 
     hide("start")
     show("main")
-
+    show("loading")
     
     sheetNum <- switch(
       input$Month,
@@ -172,14 +181,15 @@ server <- function(input, output, session) {
     
     output$delayData <- renderTable({
       data.frame(
-        Data = c(
-          mean(as.numeric(filtered$Delay), na.rm = TRUE)
+        results = c(
+          paste("Average Delay Of Flights: ",mean(as.numeric(filtered$Delay), na.rm = TRUE), sep = "")
         )
       )
+      
     })
-    
+    hide("loading")
   })
-
+  
 }
 
 shinyApp(ui, server)

@@ -29,6 +29,17 @@ section.sidebar .shiny-bound-input.action-button {
   height: 200px;
 }
 
-.fa-spin {
-  transform: rotate(360deg);
+#spinner {
+  margin: auto;
+  height: 70px;
+}
+
+#loading {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.shiny-table.spacing-s > tbody > tr > td {
+  font-size: 20px;
 }
