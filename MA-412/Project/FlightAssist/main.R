@@ -185,7 +185,7 @@ server <- function(input, output, session) {
           paste("Max Delay Mins: ", max(as.numeric(filtered$Delay), na.rm = TRUE), sep = ""),
           paste("Average Delay Of Flights: ", round(mean(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1), sep = ""),
           paste("Standard Deviation of Delay Mins: ", round(sd(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1), sep = ""),
-          paste("Probability of a Delay of over 20mins: ", round(pnorm(
+          paste("Probability of a Delay of at most 20mins: ", round(pnorm(
             20,
             mean(as.numeric(filtered$Delay), na.rm = TRUE),
             sd(as.numeric(filtered$Delay), na.rm = TRUE),
