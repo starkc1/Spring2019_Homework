@@ -3,7 +3,7 @@
 	EXPORT swap_asm_1;
 	EXPORT swap_asm_2;
 	EXPORT swap_asm_3;
-	EXPORT rank_descending_asm
+	EXPORT rank_descending_asm;
 	
 	ALIGN
 		
@@ -64,8 +64,8 @@ rank_des_loop_2
 	BGE rank_des_loop_2_end
 	ADD r0, r4, r8
 	ADD r1, r0, #1
-	LDRB r9, [r0]
-	LDRB r10, [r1]
+	;LDRB r9, [r0]
+	;LDRB r10, [r1]
 	CMP r9, r10
 	BGE else_label
 	BL swap_asm_1
@@ -77,6 +77,7 @@ rank_des_loop_2_end
 	B rank_des_loop_1
 rank_des_loop_1_end
 	POP {r4-r10,pc}
+	BX lr
 	ENDP
 		
 	END

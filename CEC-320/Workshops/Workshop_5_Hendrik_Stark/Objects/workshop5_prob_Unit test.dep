@@ -1,10 +1,10 @@
 Dependencies for Project 'workshop5_prob', Target 'Unit test': (DO NOT MODIFY !)
-F (.\source\appMain.c)(0x5CA75AEF)()
+F (.\source\appMain.c)(0x5CAB4701)()
 F (.\source\functions.c)(0x5CA75AEF)(--c99 --gnu -c --cpu Cortex-M4.fp -D__EVAL --li -g -O0 --apcs=interwork --split_sections -I .\lib -I .\lib\unity-I.\RTE\_Unit_test-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="526" -D_RTE_ -DARMCM4_FP-o .\objects\functions.o --omf_browse .\objects\functions.crf --depend .\objects\functions.d)
 I (source\functions.h)(0x5CA75AEF)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F920E)
-F (.\source\functions_asm.s)(0x5CA7D1F3)(--cpu Cortex-M4.fp --li --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Unit_test-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\Device\ARM\ARMCM4\Include--pd "__UVISION_VERSION SETA 526" --pd "_RTE_ SETA 1" --pd "ARMCM4_FP SETA 1"--list .\listings\functions_asm.lst --xref -o .\objects\functions_asm.o --depend .\objects\functions_asm.d)
-F (.\source\testFunctions_all.c)(0x5CA75AEF)(--c99 --gnu -c --cpu Cortex-M4.fp -D__EVAL --li -g -O0 --apcs=interwork --split_sections -I .\lib -I .\lib\unity-I.\RTE\_Unit_test-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="526" -D_RTE_ -DARMCM4_FP-o .\objects\testfunctions_all.o --omf_browse .\objects\testfunctions_all.crf --depend .\objects\testfunctions_all.d)
+F (.\source\functions_asm.s)(0x5CABB3FD)(--cpu Cortex-M4.fp --li --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Unit_test-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\Device\ARM\ARMCM4\Include--pd "__UVISION_VERSION SETA 526" --pd "_RTE_ SETA 1" --pd "ARMCM4_FP SETA 1"--list .\listings\functions_asm.lst --xref -o .\objects\functions_asm.o --depend .\objects\functions_asm.d)
+F (.\source\testFunctions_all.c)(0x5CABB633)(--c99 --gnu -c --cpu Cortex-M4.fp -D__EVAL --li -g -O0 --apcs=interwork --split_sections -I .\lib -I .\lib\unity-I.\RTE\_Unit_test-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="526" -D_RTE_ -DARMCM4_FP-o .\objects\testfunctions_all.o --omf_browse .\objects\testfunctions_all.crf --depend .\objects\testfunctions_all.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F920C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F920E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x599F920E)

@@ -182,7 +182,15 @@ server <- function(input, output, session) {
     output$delayData <- renderTable({
       data.frame(
         results = c(
-          paste("Average Delay Of Flights: ",mean(as.numeric(filtered$Delay), na.rm = TRUE), sep = "")
+          paste("Max Delay Mins: ", max(as.numeric(filtered$Delay), na.rm = TRUE), sep = ""),
+          paste("Average Delay Of Flights: ", round(mean(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1), sep = ""),
+          paste("Standard Deviation of Delay Mins: ", round(sd(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1), sep = ""),
+          paste("Probability of a Delay of over 20mins: ", round(pnorm(
+            20,
+            mean(as.numeric(filtered$Delay), na.rm = TRUE),
+            sd(as.numeric(filtered$Delay), na.rm = TRUE),
+            lower.tail = TRUE
+          )*100, digits = 1), "%", sep = "")
         )
       )
       

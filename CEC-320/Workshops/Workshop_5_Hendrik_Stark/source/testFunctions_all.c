@@ -52,6 +52,18 @@ void test_rank_desending_c(void) {
     TEST_ASSERT_EQUAL_UINT32_ARRAY(arr1des, arr1, 5);
 }
 
+void test_swap_asm_1(void) {
+	uint32_t a1[] = {0xFFFFFFFE, 3};
+	uint32_t a2[] = {3, 0xFFFFFFFE};
+	swap_asm_1((a1), (a1+1));
+	//printf("0x%X", *(a1+1));
+	TEST_ASSERT_EQUAL_UINT32_ARRAY(a2, a1, 2);
+  uint32_t a3[] = {0xFFFFFFF0, 3};
+	uint32_t a4[] = {3, 0xFFFFFFF0};
+	swap_asm_1((a3), (a3+1));
+	TEST_ASSERT_EQUAL_UINT32_ARRAY(a4, a3, 2);
+}
+
 
 int main(void) {
     UNITY_BEGIN();
@@ -60,6 +72,7 @@ int main(void) {
     RUN_TEST(test_swap_c_3);
     RUN_TEST(test_rank_ascending_c);
     RUN_TEST(test_rank_desending_c);
+		RUN_TEST(test_swap_asm_1);
     UNITY_END();
 
     while(1);

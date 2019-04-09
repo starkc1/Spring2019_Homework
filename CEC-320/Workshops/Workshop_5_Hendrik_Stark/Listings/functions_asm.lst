@@ -9,7 +9,7 @@ ARM Macro Assembler    Page 1
     3 00000000                 EXPORT           swap_asm_1  ;
     4 00000000                 EXPORT           swap_asm_2  ;
     5 00000000                 EXPORT           swap_asm_3  ;
-    6 00000000                 EXPORT           rank_descending_asm
+    6 00000000                 EXPORT           rank_descending_asm ;
     7 00000000         
     8 00000000                 ALIGN
     9 00000000         
@@ -72,30 +72,31 @@ ARM Macro Assembler    Page 2
    56 0000004A F04F 0600       MOV              r6, #0
    57 0000004E         rank_des_loop_1
    58 0000004E 42AE            CMP              r6, r5
-   59 00000050 DA17            BGE              rank_des_loop_1_end
+   59 00000050 DA13            BGE              rank_des_loop_1_end
    60 00000052 EBA5 0706       SUB              r7, r5, r6
    61 00000056 F04F 0800       MOV              r8, #0
    62 0000005A         rank_des_loop_2
    63 0000005A 45B8            CMP              r8, r7
-   64 0000005C DA0E            BGE              rank_des_loop_2_end
+   64 0000005C DA0A            BGE              rank_des_loop_2_end
    65 0000005E EB04 0008       ADD              r0, r4, r8
    66 00000062 F100 0101       ADD              r1, r0, #1
-   67 00000066 F890 9000       LDRB             r9, [r0]
-   68 0000006A F891 A000       LDRB             r10, [r1]
-   69 0000006E 45D1            CMP              r9, r10
-   70 00000070 DA01            BGE              else_label
-   71 00000072 F7FF FFFE       BL               swap_asm_1
-   72 00000076         else_label
-   73 00000076 F108 0801       ADD              r8, #1
-   74 0000007A E7EE            B                rank_des_loop_2
-   75 0000007C         rank_des_loop_2_end
-   76 0000007C F106 0601       ADD              r6, #1
-   77 00000080 E7E5            B                rank_des_loop_1
-   78 00000082         rank_des_loop_1_end
-   79 00000082 E8BD 87F0       POP              {r4-r10,pc}
-   80 00000086                 ENDP
-   81 00000086         
-   82 00000086                 END
+   67 00000066         ;LDRB r9, [r0]
+   68 00000066         ;LDRB r10, [r1]
+   69 00000066 45D1            CMP              r9, r10
+   70 00000068 DA01            BGE              else_label
+   71 0000006A F7FF FFFE       BL               swap_asm_1
+   72 0000006E         else_label
+   73 0000006E F108 0801       ADD              r8, #1
+   74 00000072 E7F2            B                rank_des_loop_2
+   75 00000074         rank_des_loop_2_end
+   76 00000074 F106 0601       ADD              r6, #1
+   77 00000078 E7E9            B                rank_des_loop_1
+   78 0000007A         rank_des_loop_1_end
+   79 0000007A E8BD 87F0       POP              {r4-r10,pc}
+   80 0000007E 4770            BX               lr
+   81 00000080                 ENDP
+   82 00000080         
+   83 00000080                 END
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\objects\functions_asm.d -o.\objects\functions_asm.o -I.\RTE\_
 Unit_test -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5
@@ -108,7 +109,7 @@ e="ARMCM4_FP SETA 1" --list=.\listings\functions_asm.lst source\functions_asm.s
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Relocatable symbols
 
-else_label 00000076
+else_label 0000006E
 
 Symbol: else_label
    Definitions
@@ -156,7 +157,7 @@ Symbol: rank_des_loop_1
    Uses
       At line 77 in file source\functions_asm.s
 Comment: rank_des_loop_1 used once
-rank_des_loop_1_end 00000082
+rank_des_loop_1_end 0000007A
 
 Symbol: rank_des_loop_1_end
    Definitions
@@ -178,7 +179,7 @@ Relocatable symbols
    Uses
       At line 74 in file source\functions_asm.s
 Comment: rank_des_loop_2 used once
-rank_des_loop_2_end 0000007C
+rank_des_loop_2_end 00000074
 
 Symbol: rank_des_loop_2_end
    Definitions

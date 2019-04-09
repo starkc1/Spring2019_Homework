@@ -14,6 +14,7 @@ Section Cross References
     testfunctions_all.o(i.main) refers to testfunctions_all.o(i.test_swap_c_3) for test_swap_c_3
     testfunctions_all.o(i.main) refers to testfunctions_all.o(i.test_rank_ascending_c) for test_rank_ascending_c
     testfunctions_all.o(i.main) refers to testfunctions_all.o(i.test_rank_desending_c) for test_rank_desending_c
+    testfunctions_all.o(i.main) refers to testfunctions_all.o(i.test_swap_asm_1) for test_swap_asm_1
     testfunctions_all.o(i.test_rank_ascending_c) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
     testfunctions_all.o(i.test_rank_ascending_c) refers to functions.o(i.rank_ascending_c) for rank_ascending_c
     testfunctions_all.o(i.test_rank_ascending_c) refers to unity.o(i.UnityAssertEqualIntArray) for UnityAssertEqualIntArray
@@ -22,6 +23,9 @@ Section Cross References
     testfunctions_all.o(i.test_rank_desending_c) refers to functions.o(i.rank_descending_c) for rank_descending_c
     testfunctions_all.o(i.test_rank_desending_c) refers to unity.o(i.UnityAssertEqualIntArray) for UnityAssertEqualIntArray
     testfunctions_all.o(i.test_rank_desending_c) refers to testfunctions_all.o(.constdata) for .constdata
+    testfunctions_all.o(i.test_swap_asm_1) refers to functions_asm.o(functions_asm) for swap_asm_1
+    testfunctions_all.o(i.test_swap_asm_1) refers to unity.o(i.UnityAssertEqualIntArray) for UnityAssertEqualIntArray
+    testfunctions_all.o(i.test_swap_asm_1) refers to testfunctions_all.o(.constdata) for .constdata
     testfunctions_all.o(i.test_swap_c_1) refers to functions.o(i.swap_c_1) for swap_c_1
     testfunctions_all.o(i.test_swap_c_1) refers to unity.o(i.UnityAssertEqualIntArray) for UnityAssertEqualIntArray
     testfunctions_all.o(i.test_swap_c_1) refers to testfunctions_all.o(.constdata) for .constdata
@@ -528,7 +532,6 @@ Section Cross References
 
 Removing Unused input sections from the image.
 
-    Removing functions_asm.o(functions_asm), (134 bytes).
     Removing unity.o(i.UnityAssertBits), (116 bytes).
     Removing unity.o(i.UnityAssertEqualFloatArray), (284 bytes).
     Removing unity.o(i.UnityAssertEqualMemory), (304 bytes).
@@ -563,7 +566,7 @@ Removing Unused input sections from the image.
     Removing system_armcm4.o(.rrx_text), (6 bytes).
     Removing system_armcm4.o(i.SystemCoreClockUpdate), (16 bytes).
 
-34 unused section(s) (total 4176 bytes) removed from the image.
+33 unused section(s) (total 4042 bytes) removed from the image.
 
 ==============================================================================
 
@@ -574,114 +577,114 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      960  startup_armcm4.o(RESET)
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
-    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry5.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_heap_descriptor_intlibspace.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr_intlibspace.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_heap_descriptor.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_errno_addr.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  mutex_dummy.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/assert.c                         0x00000000   Number         0  assert_stdio.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_init_mt.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_free.o ABSOLUTE
     ../clib/heap1.c                          0x00000000   Number         0  h1_alloc_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_alloc.o ABSOLUTE
     ../clib/heap1.c                          0x00000000   Number         0  h1_extend_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_final.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_free.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_final_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_free_mt.o ABSOLUTE
+    ../clib/heap1.c                          0x00000000   Number         0  h1_init_mt.o ABSOLUTE
     ../clib/heap1.c                          0x00000000   Number         0  h1_extend.o ABSOLUTE
     ../clib/heap1.c                          0x00000000   Number         0  h1_init.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_free_mt.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_alloc.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_final.o ABSOLUTE
-    ../clib/heap1.c                          0x00000000   Number         0  h1_final_mt.o ABSOLUTE
-    ../clib/heap2.c                          0x00000000   Number         0  heap2mt.o ABSOLUTE
-    ../clib/heap2.c                          0x00000000   Number         0  fdtree.o ABSOLUTE
     ../clib/heap2.c                          0x00000000   Number         0  heap2.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc2.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  heapstubs.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  malloc.o ABSOLUTE
+    ../clib/heap2.c                          0x00000000   Number         0  fdtree.o ABSOLUTE
+    ../clib/heap2.c                          0x00000000   Number         0  heap2mt.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  init_alloc.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc1.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  term_alloc.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  heapstubs.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  free.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hguard.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  term_alloc.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc2.o ABSOLUTE
-    ../clib/heapalloc.c                      0x00000000   Number         0  free.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  malloc.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc1.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc1.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc2.o ABSOLUTE
+    ../clib/heapalloc.c                      0x00000000   Number         0  maybetermalloc2.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxa.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit3.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
-    ../clib/memcpset.s                       0x00000000   Number         0  strcmpv7m.o ABSOLUTE
-    ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit3.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_v6.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr_w.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  strcmpv7m.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_formal.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  fclose.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  stdio.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  setvbuf_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  flsbuf.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  streamlock.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fwritefast_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fopen_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fputc.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  setvbuf.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  initio.o ABSOLUTE
     ../clib/stdio.c                          0x00000000   Number         0  fseek.o ABSOLUTE
     ../clib/stdio.c                          0x00000000   Number         0  putc.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  fopen.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  stdio_streams.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  streamlock.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  setvbuf.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  flsbuf.o ABSOLUTE
     ../clib/stdio.c                          0x00000000   Number         0  fwritefast.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  fwritefast_locked.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  fflush.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  fputs.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  ftell.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  initio_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  stdio_streams.o ABSOLUTE
     ../clib/stdio.c                          0x00000000   Number         0  fputc_locked.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  initio.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  fputs_locked.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  fputc.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  initio_locked.o ABSOLUTE
     ../clib/stdio.c                          0x00000000   Number         0  fflush_locked.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  fopen_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  stdio.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fputs_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  ftell.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fputs.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fflush.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  setvbuf_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fclose.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  fopen.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../clib/wchar.c                          0x00000000   Number         0  flsbuf_fwide.o ABSOLUTE
     ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
@@ -786,85 +789,88 @@ Image Symbol Table
     .text                                    0x00000f90   Section        8  rt_errno_addr_intlibspace.o(.text)
     .text                                    0x00000f90   Section        0  indicate_semi.o(.text)
     .text                                    0x00000f98   Section        0  defsig_rtmem_inner.o(.text)
-    i.ITM_SendChar                           0x00000fe8   Section        0  retarget_io.o(i.ITM_SendChar)
-    i.SystemInit                             0x00001018   Section        0  system_armcm4.o(i.SystemInit)
-    i.UnityAddMsgIfSpecified                 0x00001048   Section        0  unity.o(i.UnityAddMsgIfSpecified)
-    UnityAddMsgIfSpecified                   0x00001049   Thumb Code    66  unity.o(i.UnityAddMsgIfSpecified)
-    i.UnityAssertEqualIntArray               0x0000109c   Section        0  unity.o(i.UnityAssertEqualIntArray)
-    i.UnityBegin                             0x000011dc   Section        0  unity.o(i.UnityBegin)
-    i.UnityConcludeTest                      0x000011fc   Section        0  unity.o(i.UnityConcludeTest)
-    i.UnityDefaultTestRun                    0x00001250   Section        0  unity.o(i.UnityDefaultTestRun)
-    i.UnityEnd                               0x00001294   Section        0  unity.o(i.UnityEnd)
-    i.UnityIsOneArrayNull                    0x00001320   Section        0  unity.o(i.UnityIsOneArrayNull)
-    UnityIsOneArrayNull                      0x00001321   Thumb Code    74  unity.o(i.UnityIsOneArrayNull)
-    i.UnityPrint                             0x00001374   Section        0  unity.o(i.UnityPrint)
-    i.UnityPrintChar                         0x00001390   Section        0  unity.o(i.UnityPrintChar)
-    UnityPrintChar                           0x00001391   Thumb Code   100  unity.o(i.UnityPrintChar)
-    i.UnityPrintNumber                       0x000013f8   Section        0  unity.o(i.UnityPrintNumber)
-    i.UnityPrintNumberByStyle                0x00001418   Section        0  unity.o(i.UnityPrintNumberByStyle)
-    i.UnityPrintNumberHex                    0x00001460   Section        0  unity.o(i.UnityPrintNumberHex)
-    i.UnityPrintNumberUnsigned               0x000014ac   Section        0  unity.o(i.UnityPrintNumberUnsigned)
-    i.UnityTestResultsBegin                  0x000014f0   Section        0  unity.o(i.UnityTestResultsBegin)
-    UnityTestResultsBegin                    0x000014f1   Thumb Code    52  unity.o(i.UnityTestResultsBegin)
-    i.UnityTestResultsFailBegin              0x0000152c   Section        0  unity.o(i.UnityTestResultsFailBegin)
-    UnityTestResultsFailBegin                0x0000152d   Thumb Code    30  unity.o(i.UnityTestResultsFailBegin)
-    i._sys_close                             0x00001558   Section        0  retarget_io.o(i._sys_close)
-    i._sys_flen                              0x0000157e   Section        0  retarget_io.o(i._sys_flen)
-    i._sys_istty                             0x000015a2   Section        0  retarget_io.o(i._sys_istty)
-    i._sys_open                              0x000015c8   Section        0  retarget_io.o(i._sys_open)
-    i._sys_seek                              0x00001630   Section        0  retarget_io.o(i._sys_seek)
-    i._sys_write                             0x0000165c   Section        0  retarget_io.o(i._sys_write)
-    i.fputc                                  0x000016a2   Section        0  fputc.o(i.fputc)
-    i.main                                   0x000016bc   Section        0  testfunctions_all.o(i.main)
-    i.rank_ascending_c                       0x0000178c   Section        0  functions.o(i.rank_ascending_c)
-    i.rank_descending_c                      0x000017ca   Section        0  functions.o(i.rank_descending_c)
-    i.setUp                                  0x00001808   Section        0  unity.o(i.setUp)
-    i.stdout_putchar                         0x0000180a   Section        0  retarget_io.o(i.stdout_putchar)
-    stdout_putchar                           0x0000180b   Thumb Code    12  retarget_io.o(i.stdout_putchar)
-    i.swap_c_1                               0x00001816   Section        0  functions.o(i.swap_c_1)
-    i.swap_c_2                               0x0000182a   Section        0  functions.o(i.swap_c_2)
-    i.swap_c_3                               0x00001848   Section        0  functions.o(i.swap_c_3)
-    i.tearDown                               0x00001866   Section        0  unity.o(i.tearDown)
-    i.test_rank_ascending_c                  0x00001868   Section        0  testfunctions_all.o(i.test_rank_ascending_c)
-    i.test_rank_desending_c                  0x000018ac   Section        0  testfunctions_all.o(i.test_rank_desending_c)
-    i.test_swap_c_1                          0x000018f0   Section        0  testfunctions_all.o(i.test_swap_c_1)
-    i.test_swap_c_2                          0x00001964   Section        0  testfunctions_all.o(i.test_swap_c_2)
-    i.test_swap_c_3                          0x000019d8   Section        0  testfunctions_all.o(i.test_swap_c_3)
-    x$fpl$fpinit                             0x00001a4c   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x00001a4c   Number         0  fpinit.o(x$fpl$fpinit)
-    .constdata                               0x00001a58   Section      176  testfunctions_all.o(.constdata)
-    .constdata                               0x00001b08   Section      520  unity.o(.constdata)
-    UnityStrOk                               0x00001b08   Data           3  unity.o(.constdata)
-    UnityStrPass                             0x00001b0b   Data           5  unity.o(.constdata)
-    UnityStrFail                             0x00001b10   Data           5  unity.o(.constdata)
-    UnityStrIgnore                           0x00001b15   Data           7  unity.o(.constdata)
-    UnityStrNull                             0x00001b1c   Data           5  unity.o(.constdata)
-    UnityStrSpacer                           0x00001b21   Data           3  unity.o(.constdata)
-    UnityStrExpected                         0x00001b24   Data          11  unity.o(.constdata)
-    UnityStrWas                              0x00001b2f   Data           6  unity.o(.constdata)
-    UnityStrGt                               0x00001b35   Data          21  unity.o(.constdata)
-    UnityStrLt                               0x00001b4a   Data          18  unity.o(.constdata)
-    UnityStrOrEqual                          0x00001b5c   Data          13  unity.o(.constdata)
-    UnityStrElement                          0x00001b69   Data          10  unity.o(.constdata)
-    UnityStrByte                             0x00001b73   Data           7  unity.o(.constdata)
-    UnityStrMemory                           0x00001b7a   Data          18  unity.o(.constdata)
-    UnityStrDelta                            0x00001b8c   Data          26  unity.o(.constdata)
-    UnityStrPointless                        0x00001ba6   Data          55  unity.o(.constdata)
-    UnityStrNullPointerForExpected           0x00001bdd   Data          29  unity.o(.constdata)
-    UnityStrNullPointerForActual             0x00001bfa   Data          25  unity.o(.constdata)
-    UnityStrNot                              0x00001c13   Data           5  unity.o(.constdata)
-    UnityStrInf                              0x00001c18   Data           9  unity.o(.constdata)
-    UnityStrNegInf                           0x00001c21   Data          18  unity.o(.constdata)
-    UnityStrNaN                              0x00001c33   Data           4  unity.o(.constdata)
-    UnityStrDet                              0x00001c37   Data          12  unity.o(.constdata)
-    UnityStrInvalidFloatTrait                0x00001c43   Data          20  unity.o(.constdata)
-    UnityStrBreaker                          0x00001cb3   Data          24  unity.o(.constdata)
-    UnityStrResultsTests                     0x00001ccb   Data           8  unity.o(.constdata)
-    UnityStrResultsFailures                  0x00001cd3   Data          11  unity.o(.constdata)
-    UnityStrResultsIgnored                   0x00001cde   Data          10  unity.o(.constdata)
-    UnityStrDetail1Name                      0x00001ce8   Data          10  unity.o(.constdata)
-    UnityStrDetail2Name                      0x00001cf2   Data          11  unity.o(.constdata)
-    .constdata                               0x00001d10   Section       23  retarget_io.o(.constdata)
+    functions_asm                            0x00000fe8   Section      128  functions_asm.o(functions_asm)
+    $v0                                      0x00000fe8   Number         0  functions_asm.o(functions_asm)
+    i.ITM_SendChar                           0x00001068   Section        0  retarget_io.o(i.ITM_SendChar)
+    i.SystemInit                             0x00001098   Section        0  system_armcm4.o(i.SystemInit)
+    i.UnityAddMsgIfSpecified                 0x000010c8   Section        0  unity.o(i.UnityAddMsgIfSpecified)
+    UnityAddMsgIfSpecified                   0x000010c9   Thumb Code    66  unity.o(i.UnityAddMsgIfSpecified)
+    i.UnityAssertEqualIntArray               0x0000111c   Section        0  unity.o(i.UnityAssertEqualIntArray)
+    i.UnityBegin                             0x0000125c   Section        0  unity.o(i.UnityBegin)
+    i.UnityConcludeTest                      0x0000127c   Section        0  unity.o(i.UnityConcludeTest)
+    i.UnityDefaultTestRun                    0x000012d0   Section        0  unity.o(i.UnityDefaultTestRun)
+    i.UnityEnd                               0x00001314   Section        0  unity.o(i.UnityEnd)
+    i.UnityIsOneArrayNull                    0x000013a0   Section        0  unity.o(i.UnityIsOneArrayNull)
+    UnityIsOneArrayNull                      0x000013a1   Thumb Code    74  unity.o(i.UnityIsOneArrayNull)
+    i.UnityPrint                             0x000013f4   Section        0  unity.o(i.UnityPrint)
+    i.UnityPrintChar                         0x00001410   Section        0  unity.o(i.UnityPrintChar)
+    UnityPrintChar                           0x00001411   Thumb Code   100  unity.o(i.UnityPrintChar)
+    i.UnityPrintNumber                       0x00001478   Section        0  unity.o(i.UnityPrintNumber)
+    i.UnityPrintNumberByStyle                0x00001498   Section        0  unity.o(i.UnityPrintNumberByStyle)
+    i.UnityPrintNumberHex                    0x000014e0   Section        0  unity.o(i.UnityPrintNumberHex)
+    i.UnityPrintNumberUnsigned               0x0000152c   Section        0  unity.o(i.UnityPrintNumberUnsigned)
+    i.UnityTestResultsBegin                  0x00001570   Section        0  unity.o(i.UnityTestResultsBegin)
+    UnityTestResultsBegin                    0x00001571   Thumb Code    52  unity.o(i.UnityTestResultsBegin)
+    i.UnityTestResultsFailBegin              0x000015ac   Section        0  unity.o(i.UnityTestResultsFailBegin)
+    UnityTestResultsFailBegin                0x000015ad   Thumb Code    30  unity.o(i.UnityTestResultsFailBegin)
+    i._sys_close                             0x000015d8   Section        0  retarget_io.o(i._sys_close)
+    i._sys_flen                              0x000015fe   Section        0  retarget_io.o(i._sys_flen)
+    i._sys_istty                             0x00001622   Section        0  retarget_io.o(i._sys_istty)
+    i._sys_open                              0x00001648   Section        0  retarget_io.o(i._sys_open)
+    i._sys_seek                              0x000016b0   Section        0  retarget_io.o(i._sys_seek)
+    i._sys_write                             0x000016dc   Section        0  retarget_io.o(i._sys_write)
+    i.fputc                                  0x00001722   Section        0  fputc.o(i.fputc)
+    i.main                                   0x0000173c   Section        0  testfunctions_all.o(i.main)
+    i.rank_ascending_c                       0x0000182c   Section        0  functions.o(i.rank_ascending_c)
+    i.rank_descending_c                      0x0000186a   Section        0  functions.o(i.rank_descending_c)
+    i.setUp                                  0x000018a8   Section        0  unity.o(i.setUp)
+    i.stdout_putchar                         0x000018aa   Section        0  retarget_io.o(i.stdout_putchar)
+    stdout_putchar                           0x000018ab   Thumb Code    12  retarget_io.o(i.stdout_putchar)
+    i.swap_c_1                               0x000018b6   Section        0  functions.o(i.swap_c_1)
+    i.swap_c_2                               0x000018ca   Section        0  functions.o(i.swap_c_2)
+    i.swap_c_3                               0x000018e8   Section        0  functions.o(i.swap_c_3)
+    i.tearDown                               0x00001906   Section        0  unity.o(i.tearDown)
+    i.test_rank_ascending_c                  0x00001908   Section        0  testfunctions_all.o(i.test_rank_ascending_c)
+    i.test_rank_desending_c                  0x0000194c   Section        0  testfunctions_all.o(i.test_rank_desending_c)
+    i.test_swap_asm_1                        0x00001990   Section        0  testfunctions_all.o(i.test_swap_asm_1)
+    i.test_swap_c_1                          0x00001a04   Section        0  testfunctions_all.o(i.test_swap_c_1)
+    i.test_swap_c_2                          0x00001a78   Section        0  testfunctions_all.o(i.test_swap_c_2)
+    i.test_swap_c_3                          0x00001aec   Section        0  testfunctions_all.o(i.test_swap_c_3)
+    x$fpl$fpinit                             0x00001b60   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x00001b60   Number         0  fpinit.o(x$fpl$fpinit)
+    .constdata                               0x00001b6c   Section      208  testfunctions_all.o(.constdata)
+    .constdata                               0x00001c3c   Section      520  unity.o(.constdata)
+    UnityStrOk                               0x00001c3c   Data           3  unity.o(.constdata)
+    UnityStrPass                             0x00001c3f   Data           5  unity.o(.constdata)
+    UnityStrFail                             0x00001c44   Data           5  unity.o(.constdata)
+    UnityStrIgnore                           0x00001c49   Data           7  unity.o(.constdata)
+    UnityStrNull                             0x00001c50   Data           5  unity.o(.constdata)
+    UnityStrSpacer                           0x00001c55   Data           3  unity.o(.constdata)
+    UnityStrExpected                         0x00001c58   Data          11  unity.o(.constdata)
+    UnityStrWas                              0x00001c63   Data           6  unity.o(.constdata)
+    UnityStrGt                               0x00001c69   Data          21  unity.o(.constdata)
+    UnityStrLt                               0x00001c7e   Data          18  unity.o(.constdata)
+    UnityStrOrEqual                          0x00001c90   Data          13  unity.o(.constdata)
+    UnityStrElement                          0x00001c9d   Data          10  unity.o(.constdata)
+    UnityStrByte                             0x00001ca7   Data           7  unity.o(.constdata)
+    UnityStrMemory                           0x00001cae   Data          18  unity.o(.constdata)
+    UnityStrDelta                            0x00001cc0   Data          26  unity.o(.constdata)
+    UnityStrPointless                        0x00001cda   Data          55  unity.o(.constdata)
+    UnityStrNullPointerForExpected           0x00001d11   Data          29  unity.o(.constdata)
+    UnityStrNullPointerForActual             0x00001d2e   Data          25  unity.o(.constdata)
+    UnityStrNot                              0x00001d47   Data           5  unity.o(.constdata)
+    UnityStrInf                              0x00001d4c   Data           9  unity.o(.constdata)
+    UnityStrNegInf                           0x00001d55   Data          18  unity.o(.constdata)
+    UnityStrNaN                              0x00001d67   Data           4  unity.o(.constdata)
+    UnityStrDet                              0x00001d6b   Data          12  unity.o(.constdata)
+    UnityStrInvalidFloatTrait                0x00001d77   Data          20  unity.o(.constdata)
+    UnityStrBreaker                          0x00001de7   Data          24  unity.o(.constdata)
+    UnityStrResultsTests                     0x00001dff   Data           8  unity.o(.constdata)
+    UnityStrResultsFailures                  0x00001e07   Data          11  unity.o(.constdata)
+    UnityStrResultsIgnored                   0x00001e12   Data          10  unity.o(.constdata)
+    UnityStrDetail1Name                      0x00001e1c   Data          10  unity.o(.constdata)
+    UnityStrDetail2Name                      0x00001e26   Data          11  unity.o(.constdata)
+    .constdata                               0x00001e44   Section       23  retarget_io.o(.constdata)
     .data                                    0x20000000   Section        4  system_armcm4.o(.data)
     .data                                    0x20000004   Section        4  stdio_streams.o(.data)
     .data                                    0x20000008   Section        4  stdio_streams.o(.data)
@@ -1049,49 +1055,54 @@ Image Symbol Table
     __rt_errno_addr$intlibspace              0x00000f91   Thumb Code     0  rt_errno_addr_intlibspace.o(.text)
     __semihosting_library_function           0x00000f91   Thumb Code     0  indicate_semi.o(.text)
     __rt_SIGRTMEM_inner                      0x00000f99   Thumb Code    22  defsig_rtmem_inner.o(.text)
-    ITM_SendChar                             0x00000fe9   Thumb Code    42  retarget_io.o(i.ITM_SendChar)
-    SystemInit                               0x00001019   Thumb Code    30  system_armcm4.o(i.SystemInit)
-    UnityAssertEqualIntArray                 0x0000109d   Thumb Code   298  unity.o(i.UnityAssertEqualIntArray)
-    UnityBegin                               0x000011dd   Thumb Code    28  unity.o(i.UnityBegin)
-    UnityConcludeTest                        0x000011fd   Thumb Code    72  unity.o(i.UnityConcludeTest)
-    UnityDefaultTestRun                      0x00001251   Thumb Code    64  unity.o(i.UnityDefaultTestRun)
-    UnityEnd                                 0x00001295   Thumb Code   108  unity.o(i.UnityEnd)
-    UnityPrint                               0x00001375   Thumb Code    26  unity.o(i.UnityPrint)
-    UnityPrintNumber                         0x000013f9   Thumb Code    28  unity.o(i.UnityPrintNumber)
-    UnityPrintNumberByStyle                  0x00001419   Thumb Code    66  unity.o(i.UnityPrintNumberByStyle)
-    UnityPrintNumberHex                      0x00001461   Thumb Code    70  unity.o(i.UnityPrintNumberHex)
-    UnityPrintNumberUnsigned                 0x000014ad   Thumb Code    62  unity.o(i.UnityPrintNumberUnsigned)
-    _sys_close                               0x00001559   Thumb Code    38  retarget_io.o(i._sys_close)
-    _sys_flen                                0x0000157f   Thumb Code    36  retarget_io.o(i._sys_flen)
-    _sys_istty                               0x000015a3   Thumb Code    36  retarget_io.o(i._sys_istty)
-    _sys_open                                0x000015c9   Thumb Code    80  retarget_io.o(i._sys_open)
-    _sys_seek                                0x00001631   Thumb Code    44  retarget_io.o(i._sys_seek)
-    _sys_write                               0x0000165d   Thumb Code    70  retarget_io.o(i._sys_write)
-    fputc                                    0x000016a3   Thumb Code    26  fputc.o(i.fputc)
-    main                                     0x000016bd   Thumb Code    64  testfunctions_all.o(i.main)
-    rank_ascending_c                         0x0000178d   Thumb Code    62  functions.o(i.rank_ascending_c)
-    rank_descending_c                        0x000017cb   Thumb Code    62  functions.o(i.rank_descending_c)
-    setUp                                    0x00001809   Thumb Code     2  unity.o(i.setUp)
-    swap_c_1                                 0x00001817   Thumb Code    20  functions.o(i.swap_c_1)
-    swap_c_2                                 0x0000182b   Thumb Code    30  functions.o(i.swap_c_2)
-    swap_c_3                                 0x00001849   Thumb Code    30  functions.o(i.swap_c_3)
-    tearDown                                 0x00001867   Thumb Code     2  unity.o(i.tearDown)
-    test_rank_ascending_c                    0x00001869   Thumb Code    62  testfunctions_all.o(i.test_rank_ascending_c)
-    test_rank_desending_c                    0x000018ad   Thumb Code    62  testfunctions_all.o(i.test_rank_desending_c)
-    test_swap_c_1                            0x000018f1   Thumb Code   110  testfunctions_all.o(i.test_swap_c_1)
-    test_swap_c_2                            0x00001965   Thumb Code   110  testfunctions_all.o(i.test_swap_c_2)
-    test_swap_c_3                            0x000019d9   Thumb Code   110  testfunctions_all.o(i.test_swap_c_3)
-    _fp_init                                 0x00001a4d   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x00001a55   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x00001a55   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    UnityStrErrFloat                         0x00001c57   Data          30  unity.o(.constdata)
-    UnityStrErrDouble                        0x00001c75   Data          32  unity.o(.constdata)
-    UnityStrErr64                            0x00001c95   Data          30  unity.o(.constdata)
-    __stdin_name                             0x00001d10   Data           7  retarget_io.o(.constdata)
-    __stdout_name                            0x00001d17   Data           8  retarget_io.o(.constdata)
-    __stderr_name                            0x00001d1f   Data           8  retarget_io.o(.constdata)
-    Region$$Table$$Base                      0x00001d28   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00001d48   Number         0  anon$$obj.o(Region$$Table)
+    swap_asm_1                               0x00000fe9   Thumb Code    14  functions_asm.o(functions_asm)
+    swap_asm_2                               0x00000ff7   Thumb Code    24  functions_asm.o(functions_asm)
+    swap_asm_3                               0x0000100f   Thumb Code    26  functions_asm.o(functions_asm)
+    rank_descending_asm                      0x00001029   Thumb Code    64  functions_asm.o(functions_asm)
+    ITM_SendChar                             0x00001069   Thumb Code    42  retarget_io.o(i.ITM_SendChar)
+    SystemInit                               0x00001099   Thumb Code    30  system_armcm4.o(i.SystemInit)
+    UnityAssertEqualIntArray                 0x0000111d   Thumb Code   298  unity.o(i.UnityAssertEqualIntArray)
+    UnityBegin                               0x0000125d   Thumb Code    28  unity.o(i.UnityBegin)
+    UnityConcludeTest                        0x0000127d   Thumb Code    72  unity.o(i.UnityConcludeTest)
+    UnityDefaultTestRun                      0x000012d1   Thumb Code    64  unity.o(i.UnityDefaultTestRun)
+    UnityEnd                                 0x00001315   Thumb Code   108  unity.o(i.UnityEnd)
+    UnityPrint                               0x000013f5   Thumb Code    26  unity.o(i.UnityPrint)
+    UnityPrintNumber                         0x00001479   Thumb Code    28  unity.o(i.UnityPrintNumber)
+    UnityPrintNumberByStyle                  0x00001499   Thumb Code    66  unity.o(i.UnityPrintNumberByStyle)
+    UnityPrintNumberHex                      0x000014e1   Thumb Code    70  unity.o(i.UnityPrintNumberHex)
+    UnityPrintNumberUnsigned                 0x0000152d   Thumb Code    62  unity.o(i.UnityPrintNumberUnsigned)
+    _sys_close                               0x000015d9   Thumb Code    38  retarget_io.o(i._sys_close)
+    _sys_flen                                0x000015ff   Thumb Code    36  retarget_io.o(i._sys_flen)
+    _sys_istty                               0x00001623   Thumb Code    36  retarget_io.o(i._sys_istty)
+    _sys_open                                0x00001649   Thumb Code    80  retarget_io.o(i._sys_open)
+    _sys_seek                                0x000016b1   Thumb Code    44  retarget_io.o(i._sys_seek)
+    _sys_write                               0x000016dd   Thumb Code    70  retarget_io.o(i._sys_write)
+    fputc                                    0x00001723   Thumb Code    26  fputc.o(i.fputc)
+    main                                     0x0000173d   Thumb Code    74  testfunctions_all.o(i.main)
+    rank_ascending_c                         0x0000182d   Thumb Code    62  functions.o(i.rank_ascending_c)
+    rank_descending_c                        0x0000186b   Thumb Code    62  functions.o(i.rank_descending_c)
+    setUp                                    0x000018a9   Thumb Code     2  unity.o(i.setUp)
+    swap_c_1                                 0x000018b7   Thumb Code    20  functions.o(i.swap_c_1)
+    swap_c_2                                 0x000018cb   Thumb Code    30  functions.o(i.swap_c_2)
+    swap_c_3                                 0x000018e9   Thumb Code    30  functions.o(i.swap_c_3)
+    tearDown                                 0x00001907   Thumb Code     2  unity.o(i.tearDown)
+    test_rank_ascending_c                    0x00001909   Thumb Code    62  testfunctions_all.o(i.test_rank_ascending_c)
+    test_rank_desending_c                    0x0000194d   Thumb Code    62  testfunctions_all.o(i.test_rank_desending_c)
+    test_swap_asm_1                          0x00001991   Thumb Code   110  testfunctions_all.o(i.test_swap_asm_1)
+    test_swap_c_1                            0x00001a05   Thumb Code   110  testfunctions_all.o(i.test_swap_c_1)
+    test_swap_c_2                            0x00001a79   Thumb Code   110  testfunctions_all.o(i.test_swap_c_2)
+    test_swap_c_3                            0x00001aed   Thumb Code   110  testfunctions_all.o(i.test_swap_c_3)
+    _fp_init                                 0x00001b61   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x00001b69   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x00001b69   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    UnityStrErrFloat                         0x00001d8b   Data          30  unity.o(.constdata)
+    UnityStrErrDouble                        0x00001da9   Data          32  unity.o(.constdata)
+    UnityStrErr64                            0x00001dc9   Data          30  unity.o(.constdata)
+    __stdin_name                             0x00001e44   Data           7  retarget_io.o(.constdata)
+    __stdout_name                            0x00001e4b   Data           8  retarget_io.o(.constdata)
+    __stderr_name                            0x00001e53   Data           8  retarget_io.o(.constdata)
+    Region$$Table$$Base                      0x00001e5c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00001e7c   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_armcm4.o(.data)
     __aeabi_stdin                            0x20000004   Data           4  stdio_streams.o(.data)
     __aeabi_stdout                           0x20000008   Data           4  stdio_streams.o(.data)
@@ -1115,168 +1126,170 @@ Memory Map of the image
 
   Image Entry point : 0x000003c1
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00001d5c, Max: 0x00040000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00001e90, Max: 0x00040000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001d48, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001e7c, Max: 0x00040000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x000003c0   Data   RO          490    RESET               startup_armcm4.o
-    0x000003c0   0x000003c0   0x00000008   Code   RO          565  * !!!main             c_w.l(__main.o)
-    0x000003c8   0x000003c8   0x00000034   Code   RO          901    !!!scatter          c_w.l(__scatter.o)
-    0x000003fc   0x000003fc   0x0000001a   Code   RO          903    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x00000000   0x00000000   0x000003c0   Data   RO          496    RESET               startup_armcm4.o
+    0x000003c0   0x000003c0   0x00000008   Code   RO          571  * !!!main             c_w.l(__main.o)
+    0x000003c8   0x000003c8   0x00000034   Code   RO          907    !!!scatter          c_w.l(__scatter.o)
+    0x000003fc   0x000003fc   0x0000001a   Code   RO          909    !!handler_copy      c_w.l(__scatter_copy.o)
     0x00000416   0x00000416   0x00000002   PAD
-    0x00000418   0x00000418   0x0000001c   Code   RO          905    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x00000434   0x00000434   0x00000002   Code   RO          794    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x00000436   0x00000436   0x00000004   Code   RO          677    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
-    0x0000043a   0x0000043a   0x00000000   Code   RO          680    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x0000043a   0x0000043a   0x00000008   Code   RO          847    .ARM.Collect$$libinit$$00000006  c_w.l(libinit3.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          683    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          685    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          687    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          690    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          692    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          694    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          696    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          698    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          700    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          702    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          704    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          706    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000000   Code   RO          708    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x00000442   0x00000442   0x00000004   Code   RO          709    .ARM.Collect$$libinit$$00000024  c_w.l(libinit2.o)
-    0x00000446   0x00000446   0x00000000   Code   RO          710    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x00000446   0x00000446   0x00000000   Code   RO          714    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x00000446   0x00000446   0x00000000   Code   RO          716    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x00000446   0x00000446   0x00000000   Code   RO          718    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x00000446   0x00000446   0x00000000   Code   RO          720    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x00000446   0x00000446   0x00000002   Code   RO          721    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x00000448   0x00000448   0x00000008   Code   RO          848    .ARM.Collect$$libinit$$00002717  c_w.l(libinit3.o)
-    0x00000450   0x00000450   0x00000002   Code   RO          898    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x00000452   0x00000452   0x00000000   Code   RO          723    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x00000452   0x00000452   0x00000004   Code   RO          724    .ARM.Collect$$libshutdown$$00000003  c_w.l(libshutdown2.o)
-    0x00000456   0x00000456   0x00000000   Code   RO          725    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x00000456   0x00000456   0x00000000   Code   RO          728    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x00000456   0x00000456   0x00000000   Code   RO          731    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x00000456   0x00000456   0x00000000   Code   RO          733    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x00000456   0x00000456   0x00000000   Code   RO          736    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x00000456   0x00000456   0x00000002   Code   RO          737    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x00000458   0x00000458   0x00000000   Code   RO          569    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x00000458   0x00000458   0x00000000   Code   RO          583    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x00000458   0x00000458   0x00000004   Code   RO          597    .ARM.Collect$$rtentry$$00000005  c_w.l(__rtentry5.o)
-    0x0000045c   0x0000045c   0x00000000   Code   RO          585    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x0000045c   0x0000045c   0x00000004   Code   RO          586    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x00000460   0x00000460   0x00000000   Code   RO          588    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x00000460   0x00000460   0x00000008   Code   RO          589    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x00000468   0x00000468   0x00000004   Code   RO          598    .ARM.Collect$$rtentry$$00002716  c_w.l(__rtentry5.o)
-    0x0000046c   0x0000046c   0x00000002   Code   RO          804    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x0000046e   0x0000046e   0x00000000   Code   RO          859    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x0000046e   0x0000046e   0x00000004   Code   RO          860    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x00000472   0x00000472   0x00000006   Code   RO          861    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
-    0x00000478   0x00000478   0x00000000   Code   RO          806    .emb_text           c_w.l(maybetermalloc1.o)
-    0x00000478   0x00000478   0x00000038   Code   RO          491    .text               startup_armcm4.o
-    0x000004b0   0x000004b0   0x00000004   Code   RO          553    .text               c_w.l(putc.o)
-    0x000004b4   0x000004b4   0x00000064   Code   RO          561    .text               c_w.l(rt_memcpy_w.o)
-    0x00000518   0x00000518   0x00000080   Code   RO          563    .text               c_w.l(strcmpv7m.o)
-    0x00000598   0x00000598   0x00000062   Code   RO          567    .text               fz_wm.l(setjmp.o)
+    0x00000418   0x00000418   0x0000001c   Code   RO          911    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x00000434   0x00000434   0x00000002   Code   RO          800    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x00000436   0x00000436   0x00000004   Code   RO          683    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x0000043a   0x0000043a   0x00000000   Code   RO          686    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x0000043a   0x0000043a   0x00000008   Code   RO          853    .ARM.Collect$$libinit$$00000006  c_w.l(libinit3.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          689    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          691    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          693    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          696    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          698    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          700    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          702    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          704    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          706    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          708    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          710    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          712    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000000   Code   RO          714    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x00000442   0x00000442   0x00000004   Code   RO          715    .ARM.Collect$$libinit$$00000024  c_w.l(libinit2.o)
+    0x00000446   0x00000446   0x00000000   Code   RO          716    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x00000446   0x00000446   0x00000000   Code   RO          720    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x00000446   0x00000446   0x00000000   Code   RO          722    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x00000446   0x00000446   0x00000000   Code   RO          724    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x00000446   0x00000446   0x00000000   Code   RO          726    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x00000446   0x00000446   0x00000002   Code   RO          727    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x00000448   0x00000448   0x00000008   Code   RO          854    .ARM.Collect$$libinit$$00002717  c_w.l(libinit3.o)
+    0x00000450   0x00000450   0x00000002   Code   RO          904    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x00000452   0x00000452   0x00000000   Code   RO          729    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x00000452   0x00000452   0x00000004   Code   RO          730    .ARM.Collect$$libshutdown$$00000003  c_w.l(libshutdown2.o)
+    0x00000456   0x00000456   0x00000000   Code   RO          731    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x00000456   0x00000456   0x00000000   Code   RO          734    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x00000456   0x00000456   0x00000000   Code   RO          737    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x00000456   0x00000456   0x00000000   Code   RO          739    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x00000456   0x00000456   0x00000000   Code   RO          742    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x00000456   0x00000456   0x00000002   Code   RO          743    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x00000458   0x00000458   0x00000000   Code   RO          575    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x00000458   0x00000458   0x00000000   Code   RO          589    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x00000458   0x00000458   0x00000004   Code   RO          603    .ARM.Collect$$rtentry$$00000005  c_w.l(__rtentry5.o)
+    0x0000045c   0x0000045c   0x00000000   Code   RO          591    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x0000045c   0x0000045c   0x00000004   Code   RO          592    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x00000460   0x00000460   0x00000000   Code   RO          594    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x00000460   0x00000460   0x00000008   Code   RO          595    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x00000468   0x00000468   0x00000004   Code   RO          604    .ARM.Collect$$rtentry$$00002716  c_w.l(__rtentry5.o)
+    0x0000046c   0x0000046c   0x00000002   Code   RO          810    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x0000046e   0x0000046e   0x00000000   Code   RO          865    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x0000046e   0x0000046e   0x00000004   Code   RO          866    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x00000472   0x00000472   0x00000006   Code   RO          867    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x00000478   0x00000478   0x00000000   Code   RO          812    .emb_text           c_w.l(maybetermalloc1.o)
+    0x00000478   0x00000478   0x00000038   Code   RO          497    .text               startup_armcm4.o
+    0x000004b0   0x000004b0   0x00000004   Code   RO          559    .text               c_w.l(putc.o)
+    0x000004b4   0x000004b4   0x00000064   Code   RO          567    .text               c_w.l(rt_memcpy_w.o)
+    0x00000518   0x00000518   0x00000080   Code   RO          569    .text               c_w.l(strcmpv7m.o)
+    0x00000598   0x00000598   0x00000062   Code   RO          573    .text               fz_wm.l(setjmp.o)
     0x000005fa   0x000005fa   0x00000002   PAD
-    0x000005fc   0x000005fc   0x00000138   Code   RO          574    .text               c_w.l(initio.o)
-    0x00000734   0x00000734   0x0000004e   Code   RO          604    .text               c_w.l(h1_free.o)
-    0x00000782   0x00000782   0x000001d6   Code   RO          658    .text               c_w.l(flsbuf.o)
-    0x00000958   0x00000958   0x00000046   Code   RO          660    .text               c_w.l(setvbuf.o)
+    0x000005fc   0x000005fc   0x00000138   Code   RO          580    .text               c_w.l(initio.o)
+    0x00000734   0x00000734   0x0000004e   Code   RO          610    .text               c_w.l(h1_free.o)
+    0x00000782   0x00000782   0x000001d6   Code   RO          664    .text               c_w.l(flsbuf.o)
+    0x00000958   0x00000958   0x00000046   Code   RO          666    .text               c_w.l(setvbuf.o)
     0x0000099e   0x0000099e   0x00000002   PAD
-    0x000009a0   0x000009a0   0x000000ec   Code   RO          663    .text               c_w.l(fopen.o)
-    0x00000a8c   0x00000a8c   0x0000004c   Code   RO          665    .text               c_w.l(fclose.o)
-    0x00000ad8   0x00000ad8   0x0000000e   Code   RO          671    .text               c_w.l(defsig_rtred_outer.o)
-    0x00000ae6   0x00000ae6   0x0000004e   Code   RO          675    .text               c_w.l(rt_memclr_w.o)
-    0x00000b34   0x00000b34   0x00000008   Code   RO          747    .text               c_w.l(rt_heap_descriptor_intlibspace.o)
-    0x00000b3c   0x00000b3c   0x00000004   Code   RO          749    .text               c_w.l(hguard.o)
-    0x00000b40   0x00000b40   0x0000008a   Code   RO          751    .text               c_w.l(init_alloc.o)
-    0x00000bca   0x00000bca   0x0000005e   Code   RO          757    .text               c_w.l(h1_alloc.o)
-    0x00000c28   0x00000c28   0x000000f8   Code   RO          771    .text               c_w.l(fseek.o)
-    0x00000d20   0x00000d20   0x000000f0   Code   RO          773    .text               c_w.l(stdio.o)
-    0x00000e10   0x00000e10   0x00000012   Code   RO          779    .text               c_w.l(exit.o)
-    0x00000e22   0x00000e22   0x0000000a   Code   RO          781    .text               c_w.l(defsig_exit.o)
-    0x00000e2c   0x00000e2c   0x00000034   Code   RO          783    .text               c_w.l(defsig_rtred_inner.o)
-    0x00000e60   0x00000e60   0x0000000c   Code   RO          797    .text               c_w.l(sys_exit.o)
-    0x00000e6c   0x00000e6c   0x0000000e   Code   RO          808    .text               c_w.l(h1_init.o)
-    0x00000e7a   0x00000e7a   0x00000034   Code   RO          810    .text               c_w.l(h1_extend.o)
-    0x00000eae   0x00000eae   0x00000042   Code   RO          820    .text               c_w.l(ftell.o)
-    0x00000ef0   0x00000ef0   0x00000032   Code   RO          828    .text               c_w.l(defsig_general.o)
-    0x00000f22   0x00000f22   0x0000000e   Code   RO          830    .text               c_w.l(defsig_rtmem_outer.o)
-    0x00000f30   0x00000f30   0x00000050   Code   RO          836    .text               c_w.l(heapauxa.o)
-    0x00000f80   0x00000f80   0x0000000e   Code   RO          851    .text               c_w.l(sys_wrch.o)
-    0x00000f8e   0x00000f8e   0x00000002   Code   RO          855    .text               c_w.l(use_no_semi.o)
-    0x00000f90   0x00000f90   0x00000000   Code   RO          857    .text               c_w.l(indicate_semi.o)
-    0x00000f90   0x00000f90   0x00000008   Code   RO          868    .text               c_w.l(rt_errno_addr_intlibspace.o)
-    0x00000f98   0x00000f98   0x00000050   Code   RO          874    .text               c_w.l(defsig_rtmem_inner.o)
-    0x00000fe8   0x00000fe8   0x00000030   Code   RO          401    i.ITM_SendChar      retarget_io.o
-    0x00001018   0x00001018   0x00000030   Code   RO          499    i.SystemInit        system_armcm4.o
-    0x00001048   0x00001048   0x00000054   Code   RO          127    i.UnityAddMsgIfSpecified  unity.o
-    0x0000109c   0x0000109c   0x00000140   Code   RO          130    i.UnityAssertEqualIntArray  unity.o
-    0x000011dc   0x000011dc   0x00000020   Code   RO          140    i.UnityBegin        unity.o
-    0x000011fc   0x000011fc   0x00000054   Code   RO          141    i.UnityConcludeTest  unity.o
-    0x00001250   0x00001250   0x00000044   Code   RO          142    i.UnityDefaultTestRun  unity.o
-    0x00001294   0x00001294   0x0000008c   Code   RO          143    i.UnityEnd          unity.o
-    0x00001320   0x00001320   0x00000054   Code   RO          148    i.UnityIsOneArrayNull  unity.o
-    0x00001374   0x00001374   0x0000001a   Code   RO          150    i.UnityPrint        unity.o
-    0x0000138e   0x0000138e   0x00000002   PAD
-    0x00001390   0x00001390   0x00000068   Code   RO          151    i.UnityPrintChar    unity.o
-    0x000013f8   0x000013f8   0x00000020   Code   RO          157    i.UnityPrintNumber  unity.o
-    0x00001418   0x00001418   0x00000048   Code   RO          158    i.UnityPrintNumberByStyle  unity.o
-    0x00001460   0x00001460   0x0000004c   Code   RO          159    i.UnityPrintNumberHex  unity.o
-    0x000014ac   0x000014ac   0x00000044   Code   RO          160    i.UnityPrintNumberUnsigned  unity.o
-    0x000014f0   0x000014f0   0x0000003c   Code   RO          161    i.UnityTestResultsBegin  unity.o
-    0x0000152c   0x0000152c   0x0000002c   Code   RO          162    i.UnityTestResultsFailBegin  unity.o
-    0x00001558   0x00001558   0x00000026   Code   RO          402    i._sys_close        retarget_io.o
-    0x0000157e   0x0000157e   0x00000024   Code   RO          403    i._sys_flen         retarget_io.o
-    0x000015a2   0x000015a2   0x00000024   Code   RO          404    i._sys_istty        retarget_io.o
-    0x000015c6   0x000015c6   0x00000002   PAD
-    0x000015c8   0x000015c8   0x00000068   Code   RO          405    i._sys_open         retarget_io.o
-    0x00001630   0x00001630   0x0000002c   Code   RO          407    i._sys_seek         retarget_io.o
-    0x0000165c   0x0000165c   0x00000046   Code   RO          408    i._sys_write        retarget_io.o
-    0x000016a2   0x000016a2   0x0000001a   Code   RO          571    i.fputc             c_w.l(fputc.o)
-    0x000016bc   0x000016bc   0x000000d0   Code   RO           50    i.main              testfunctions_all.o
-    0x0000178c   0x0000178c   0x0000003e   Code   RO            1    i.rank_ascending_c  functions.o
-    0x000017ca   0x000017ca   0x0000003e   Code   RO            2    i.rank_descending_c  functions.o
-    0x00001808   0x00001808   0x00000002   Code   RO          165    i.setUp             unity.o
-    0x0000180a   0x0000180a   0x0000000c   Code   RO          409    i.stdout_putchar    retarget_io.o
-    0x00001816   0x00001816   0x00000014   Code   RO            3    i.swap_c_1          functions.o
-    0x0000182a   0x0000182a   0x0000001e   Code   RO            4    i.swap_c_2          functions.o
-    0x00001848   0x00001848   0x0000001e   Code   RO            5    i.swap_c_3          functions.o
-    0x00001866   0x00001866   0x00000002   Code   RO          168    i.tearDown          unity.o
-    0x00001868   0x00001868   0x00000044   Code   RO           51    i.test_rank_ascending_c  testfunctions_all.o
-    0x000018ac   0x000018ac   0x00000044   Code   RO           52    i.test_rank_desending_c  testfunctions_all.o
-    0x000018f0   0x000018f0   0x00000074   Code   RO           53    i.test_swap_c_1     testfunctions_all.o
-    0x00001964   0x00001964   0x00000074   Code   RO           54    i.test_swap_c_2     testfunctions_all.o
-    0x000019d8   0x000019d8   0x00000074   Code   RO           55    i.test_swap_c_3     testfunctions_all.o
-    0x00001a4c   0x00001a4c   0x0000000a   Code   RO          795    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x00001a56   0x00001a56   0x00000002   PAD
-    0x00001a58   0x00001a58   0x000000b0   Data   RO           56    .constdata          testfunctions_all.o
-    0x00001b08   0x00001b08   0x00000208   Data   RO          170    .constdata          unity.o
-    0x00001d10   0x00001d10   0x00000017   Data   RO          410    .constdata          retarget_io.o
-    0x00001d27   0x00001d27   0x00000001   PAD
-    0x00001d28   0x00001d28   0x00000020   Data   RO          899    Region$$Table       anon$$obj.o
+    0x000009a0   0x000009a0   0x000000ec   Code   RO          669    .text               c_w.l(fopen.o)
+    0x00000a8c   0x00000a8c   0x0000004c   Code   RO          671    .text               c_w.l(fclose.o)
+    0x00000ad8   0x00000ad8   0x0000000e   Code   RO          677    .text               c_w.l(defsig_rtred_outer.o)
+    0x00000ae6   0x00000ae6   0x0000004e   Code   RO          681    .text               c_w.l(rt_memclr_w.o)
+    0x00000b34   0x00000b34   0x00000008   Code   RO          753    .text               c_w.l(rt_heap_descriptor_intlibspace.o)
+    0x00000b3c   0x00000b3c   0x00000004   Code   RO          755    .text               c_w.l(hguard.o)
+    0x00000b40   0x00000b40   0x0000008a   Code   RO          757    .text               c_w.l(init_alloc.o)
+    0x00000bca   0x00000bca   0x0000005e   Code   RO          763    .text               c_w.l(h1_alloc.o)
+    0x00000c28   0x00000c28   0x000000f8   Code   RO          777    .text               c_w.l(fseek.o)
+    0x00000d20   0x00000d20   0x000000f0   Code   RO          779    .text               c_w.l(stdio.o)
+    0x00000e10   0x00000e10   0x00000012   Code   RO          785    .text               c_w.l(exit.o)
+    0x00000e22   0x00000e22   0x0000000a   Code   RO          787    .text               c_w.l(defsig_exit.o)
+    0x00000e2c   0x00000e2c   0x00000034   Code   RO          789    .text               c_w.l(defsig_rtred_inner.o)
+    0x00000e60   0x00000e60   0x0000000c   Code   RO          803    .text               c_w.l(sys_exit.o)
+    0x00000e6c   0x00000e6c   0x0000000e   Code   RO          814    .text               c_w.l(h1_init.o)
+    0x00000e7a   0x00000e7a   0x00000034   Code   RO          816    .text               c_w.l(h1_extend.o)
+    0x00000eae   0x00000eae   0x00000042   Code   RO          826    .text               c_w.l(ftell.o)
+    0x00000ef0   0x00000ef0   0x00000032   Code   RO          834    .text               c_w.l(defsig_general.o)
+    0x00000f22   0x00000f22   0x0000000e   Code   RO          836    .text               c_w.l(defsig_rtmem_outer.o)
+    0x00000f30   0x00000f30   0x00000050   Code   RO          842    .text               c_w.l(heapauxa.o)
+    0x00000f80   0x00000f80   0x0000000e   Code   RO          857    .text               c_w.l(sys_wrch.o)
+    0x00000f8e   0x00000f8e   0x00000002   Code   RO          861    .text               c_w.l(use_no_semi.o)
+    0x00000f90   0x00000f90   0x00000000   Code   RO          863    .text               c_w.l(indicate_semi.o)
+    0x00000f90   0x00000f90   0x00000008   Code   RO          874    .text               c_w.l(rt_errno_addr_intlibspace.o)
+    0x00000f98   0x00000f98   0x00000050   Code   RO          880    .text               c_w.l(defsig_rtmem_inner.o)
+    0x00000fe8   0x00000fe8   0x00000080   Code   RO           45    functions_asm       functions_asm.o
+    0x00001068   0x00001068   0x00000030   Code   RO          407    i.ITM_SendChar      retarget_io.o
+    0x00001098   0x00001098   0x00000030   Code   RO          505    i.SystemInit        system_armcm4.o
+    0x000010c8   0x000010c8   0x00000054   Code   RO          133    i.UnityAddMsgIfSpecified  unity.o
+    0x0000111c   0x0000111c   0x00000140   Code   RO          136    i.UnityAssertEqualIntArray  unity.o
+    0x0000125c   0x0000125c   0x00000020   Code   RO          146    i.UnityBegin        unity.o
+    0x0000127c   0x0000127c   0x00000054   Code   RO          147    i.UnityConcludeTest  unity.o
+    0x000012d0   0x000012d0   0x00000044   Code   RO          148    i.UnityDefaultTestRun  unity.o
+    0x00001314   0x00001314   0x0000008c   Code   RO          149    i.UnityEnd          unity.o
+    0x000013a0   0x000013a0   0x00000054   Code   RO          154    i.UnityIsOneArrayNull  unity.o
+    0x000013f4   0x000013f4   0x0000001a   Code   RO          156    i.UnityPrint        unity.o
+    0x0000140e   0x0000140e   0x00000002   PAD
+    0x00001410   0x00001410   0x00000068   Code   RO          157    i.UnityPrintChar    unity.o
+    0x00001478   0x00001478   0x00000020   Code   RO          163    i.UnityPrintNumber  unity.o
+    0x00001498   0x00001498   0x00000048   Code   RO          164    i.UnityPrintNumberByStyle  unity.o
+    0x000014e0   0x000014e0   0x0000004c   Code   RO          165    i.UnityPrintNumberHex  unity.o
+    0x0000152c   0x0000152c   0x00000044   Code   RO          166    i.UnityPrintNumberUnsigned  unity.o
+    0x00001570   0x00001570   0x0000003c   Code   RO          167    i.UnityTestResultsBegin  unity.o
+    0x000015ac   0x000015ac   0x0000002c   Code   RO          168    i.UnityTestResultsFailBegin  unity.o
+    0x000015d8   0x000015d8   0x00000026   Code   RO          408    i._sys_close        retarget_io.o
+    0x000015fe   0x000015fe   0x00000024   Code   RO          409    i._sys_flen         retarget_io.o
+    0x00001622   0x00001622   0x00000024   Code   RO          410    i._sys_istty        retarget_io.o
+    0x00001646   0x00001646   0x00000002   PAD
+    0x00001648   0x00001648   0x00000068   Code   RO          411    i._sys_open         retarget_io.o
+    0x000016b0   0x000016b0   0x0000002c   Code   RO          413    i._sys_seek         retarget_io.o
+    0x000016dc   0x000016dc   0x00000046   Code   RO          414    i._sys_write        retarget_io.o
+    0x00001722   0x00001722   0x0000001a   Code   RO          577    i.fputc             c_w.l(fputc.o)
+    0x0000173c   0x0000173c   0x000000f0   Code   RO           50    i.main              testfunctions_all.o
+    0x0000182c   0x0000182c   0x0000003e   Code   RO            1    i.rank_ascending_c  functions.o
+    0x0000186a   0x0000186a   0x0000003e   Code   RO            2    i.rank_descending_c  functions.o
+    0x000018a8   0x000018a8   0x00000002   Code   RO          171    i.setUp             unity.o
+    0x000018aa   0x000018aa   0x0000000c   Code   RO          415    i.stdout_putchar    retarget_io.o
+    0x000018b6   0x000018b6   0x00000014   Code   RO            3    i.swap_c_1          functions.o
+    0x000018ca   0x000018ca   0x0000001e   Code   RO            4    i.swap_c_2          functions.o
+    0x000018e8   0x000018e8   0x0000001e   Code   RO            5    i.swap_c_3          functions.o
+    0x00001906   0x00001906   0x00000002   Code   RO          174    i.tearDown          unity.o
+    0x00001908   0x00001908   0x00000044   Code   RO           51    i.test_rank_ascending_c  testfunctions_all.o
+    0x0000194c   0x0000194c   0x00000044   Code   RO           52    i.test_rank_desending_c  testfunctions_all.o
+    0x00001990   0x00001990   0x00000074   Code   RO           53    i.test_swap_asm_1   testfunctions_all.o
+    0x00001a04   0x00001a04   0x00000074   Code   RO           54    i.test_swap_c_1     testfunctions_all.o
+    0x00001a78   0x00001a78   0x00000074   Code   RO           55    i.test_swap_c_2     testfunctions_all.o
+    0x00001aec   0x00001aec   0x00000074   Code   RO           56    i.test_swap_c_3     testfunctions_all.o
+    0x00001b60   0x00001b60   0x0000000a   Code   RO          801    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x00001b6a   0x00001b6a   0x00000002   PAD
+    0x00001b6c   0x00001b6c   0x000000d0   Data   RO           57    .constdata          testfunctions_all.o
+    0x00001c3c   0x00001c3c   0x00000208   Data   RO          176    .constdata          unity.o
+    0x00001e44   0x00001e44   0x00000017   Data   RO          416    .constdata          retarget_io.o
+    0x00001e5b   0x00001e5b   0x00000001   PAD
+    0x00001e5c   0x00001e5c   0x00000020   Data   RO          905    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x00001d48, Size: 0x00001240, Max: 0x00010000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x00001e7c, Size: 0x00001240, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00001d48   0x00000004   Data   RW          500    .data               system_armcm4.o
-    0x20000004   0x00001d4c   0x00000004   Data   RW          558    .data               c_w.l(stdio_streams.o)
-    0x20000008   0x00001d50   0x00000004   Data   RW          559    .data               c_w.l(stdio_streams.o)
-    0x2000000c   0x00001d54   0x00000004   Data   RW          560    .data               c_w.l(stdio_streams.o)
-    0x20000010   0x00001d58   0x00000004   Data   RW          837    .data               c_w.l(heapauxa.o)
-    0x20000014   0x00001d5c   0x00000004   PAD
-    0x20000018        -       0x000000c8   Zero   RW          169    .bss                unity.o
-    0x200000e0        -       0x00000054   Zero   RW          555    .bss                c_w.l(stdio_streams.o)
-    0x20000134        -       0x00000054   Zero   RW          556    .bss                c_w.l(stdio_streams.o)
-    0x20000188        -       0x00000054   Zero   RW          557    .bss                c_w.l(stdio_streams.o)
-    0x200001dc        -       0x00000060   Zero   RW          800    .bss                c_w.l(libspace.o)
-    0x2000023c   0x00001d5c   0x00000004   PAD
-    0x20000240        -       0x00000c00   Zero   RW          489    HEAP                startup_armcm4.o
-    0x20000e40        -       0x00000400   Zero   RW          488    STACK               startup_armcm4.o
+    0x20000000   0x00001e7c   0x00000004   Data   RW          506    .data               system_armcm4.o
+    0x20000004   0x00001e80   0x00000004   Data   RW          564    .data               c_w.l(stdio_streams.o)
+    0x20000008   0x00001e84   0x00000004   Data   RW          565    .data               c_w.l(stdio_streams.o)
+    0x2000000c   0x00001e88   0x00000004   Data   RW          566    .data               c_w.l(stdio_streams.o)
+    0x20000010   0x00001e8c   0x00000004   Data   RW          843    .data               c_w.l(heapauxa.o)
+    0x20000014   0x00001e90   0x00000004   PAD
+    0x20000018        -       0x000000c8   Zero   RW          175    .bss                unity.o
+    0x200000e0        -       0x00000054   Zero   RW          561    .bss                c_w.l(stdio_streams.o)
+    0x20000134        -       0x00000054   Zero   RW          562    .bss                c_w.l(stdio_streams.o)
+    0x20000188        -       0x00000054   Zero   RW          563    .bss                c_w.l(stdio_streams.o)
+    0x200001dc        -       0x00000060   Zero   RW          806    .bss                c_w.l(libspace.o)
+    0x2000023c   0x00001e90   0x00000004   PAD
+    0x20000240        -       0x00000c00   Zero   RW          495    HEAP                startup_armcm4.o
+    0x20000e40        -       0x00000400   Zero   RW          494    STACK               startup_armcm4.o
 
 
 ==============================================================================
@@ -1287,15 +1300,15 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        204          0          0          0          0       8092   functions.o
-         0          0          0          0          0         32   functions_asm.o
+       128          0          0          0          0        604   functions_asm.o
        388         30         23          0          0       6922   retarget_io.o
         56         10        960          0       4096       1252   startup_armcm4.o
         48         18          0          4          0        783   system_armcm4.o
-       692        174        176          0          0       4362   testfunctions_all.o
+       840        202        208          0          0       5044   testfunctions_all.o
       1298        150        520          0        200      51152   unity.o
 
     ----------------------------------------------------------------------
-      2690        382       1712          4       4296      72595   Object Totals
+      2966        410       1744          4       4296      73849   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          4          0          1          0          0          0   (incl. Padding)
 
@@ -1377,15 +1390,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5784        578       1712         20       4652      70799   Grand Totals
-      5784        578       1712         20       4652      70799   ELF Image Totals
-      5784        578       1712         20          0          0   ROM Totals
+      6060        606       1744         20       4652      71853   Grand Totals
+      6060        606       1744         20       4652      71853   ELF Image Totals
+      6060        606       1744         20          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 7496 (   7.32kB)
+    Total RO  Size (Code + RO Data)                 7804 (   7.62kB)
     Total RW  Size (RW Data + ZI Data)              4672 (   4.56kB)
-    Total ROM Size (Code + RO Data + RW Data)       7516 (   7.34kB)
+    Total ROM Size (Code + RO Data + RW Data)       7824 (   7.64kB)
 
 ==============================================================================
 

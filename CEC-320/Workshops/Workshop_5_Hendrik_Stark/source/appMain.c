@@ -10,7 +10,7 @@
 uint32_t breakPointHere = 0;
 
 int main(void) {
-    uint32_t myID = 1234;   // The last 4 digit of your ERAU ID
+    uint32_t myID = 7995;   // The last 4 digit of your ERAU ID
     uint32_t  array1[N], array2[N];
     srand(myID);            // Seed the random number generator
     for (int i = 0; i < N; i++) {
