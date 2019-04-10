@@ -179,18 +179,23 @@ server <- function(input, output, session) {
       Date == paste("2017-",input$Month,"-",input$Day,"-", sep="") | Date == paste("2018-",input$Month,"-",input$Day,"-", sep="")
     ))
     
+    maxDelay <- max(as.numeric(filtered$Delay), na.rm = TRUE)
+    avgDelay <- round(mean(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1)
+    std <- round(sd(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1)
+    prob20 <- round(pnorm(
+      20,
+      avgDelay,
+      std,
+      lower.tail = TRUE
+    )*100, digits = 1)
+    
     output$delayData <- renderTable({
       data.frame(
         results = c(
-          paste("Max Delay Mins: ", max(as.numeric(filtered$Delay), na.rm = TRUE), sep = ""),
-          paste("Average Delay Of Flights: ", round(mean(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1), sep = ""),
-          paste("Standard Deviation of Delay Mins: ", round(sd(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1), sep = ""),
-          paste("Probability of a Delay of at most 20mins: ", round(pnorm(
-            20,
-            mean(as.numeric(filtered$Delay), na.rm = TRUE),
-            sd(as.numeric(filtered$Delay), na.rm = TRUE),
-            lower.tail = TRUE
-          )*100, digits = 1), "%", sep = "")
+          paste("Max Delay Mins: ", maxDelay, sep = ""),
+          paste("Average Delay Of Flights: ", avgDelay, sep = ""),
+          paste("Standard Deviation of Delay Mins: ", std, sep = ""),
+          paste("Probability of a Delay of at most 20mins: ", prob20, "%", sep = "")
         )
       )
       
