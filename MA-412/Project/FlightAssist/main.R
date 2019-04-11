@@ -125,6 +125,7 @@ ui <- dashboardPage(
             div(
               id = "content",
               #withSpinner(tableOutput("delayData"), type = 3, color = "#3c8dbc", color.background = "#FFF")
+              textOutput("flightInfo"),
               tableOutput("delayData")
             )
           ),
@@ -168,16 +169,17 @@ server <- function(input, output, session) {
       "12" = 12
     )
     
-    df = read.xlsx("DelayCancelData.xlsx", sheet = 1, colNames = TRUE, detectDates = TRUE)
+    df = read.xlsx("DelayCancelData.xlsx", sheet = sheetNum, colNames = TRUE, detectDates = TRUE)
     
     filtered <- data.frame(filter(
       df, 
       Carrier == input$Airline, 
       Origin == input$origin, 
       Dest == input$dest, 
-      Date == paste("2017-",input$Month,"-",input$Day,"-", sep="") | Date == paste("2018-",input$Month,"-",input$Day,"-", sep="")
+      Date == paste("2018-",input$Month,"-",input$Day,"-", sep="")
     ))
     
+    flightCount <- nrow(filtered)
     maxDelay <- max(as.numeric(filtered$Delay), na.rm = TRUE)
     avgDelay <- round(mean(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1)
     std <- round(sd(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1)
@@ -188,6 +190,10 @@ server <- function(input, output, session) {
       lower.tail = TRUE
     )*100, digits = 1)
     
+    
+    output$flightInfo <- renderText({
+      paste("Total Flights: ", flightCount)
+    })
     output$delayData <- renderTable({
       data.frame(
         results = c(
