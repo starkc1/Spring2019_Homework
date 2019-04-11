@@ -125,6 +125,7 @@ ui <- dashboardPage(
             div(
               id = "content",
               #withSpinner(tableOutput("delayData"), type = 3, color = "#3c8dbc", color.background = "#FFF")
+              textOutput("flightInfo"),
               tableOutput("delayData")
             )
           ),
@@ -168,28 +169,38 @@ server <- function(input, output, session) {
       "12" = 12
     )
     
-    df = read.xlsx("DelayCancelData.xlsx", sheet = 1, colNames = TRUE, detectDates = TRUE)
+    df = read.xlsx("DelayCancelData.xlsx", sheet = sheetNum, colNames = TRUE, detectDates = TRUE)
     
     filtered <- data.frame(filter(
       df, 
       Carrier == input$Airline, 
       Origin == input$origin, 
       Dest == input$dest, 
-      Date == paste("2017-",input$Month,"-",input$Day,"-", sep="") | Date == paste("2018-",input$Month,"-",input$Day,"-", sep="")
+      Date == paste("2018-",input$Month,"-",input$Day,"-", sep="")
     ))
     
+    flightCount <- nrow(filtered)
+    maxDelay <- max(as.numeric(filtered$Delay), na.rm = TRUE)
+    avgDelay <- round(mean(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1)
+    std <- round(sd(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1)
+    prob20 <- round(pnorm(
+      20,
+      avgDelay,
+      std,
+      lower.tail = TRUE
+    )*100, digits = 1)
+    
+    
+    output$flightInfo <- renderText({
+      paste("Total Flights: ", flightCount)
+    })
     output$delayData <- renderTable({
       data.frame(
         results = c(
-          paste("Max Delay Mins: ", max(as.numeric(filtered$Delay), na.rm = TRUE), sep = ""),
-          paste("Average Delay Of Flights: ", round(mean(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1), sep = ""),
-          paste("Standard Deviation of Delay Mins: ", round(sd(as.numeric(filtered$Delay), na.rm = TRUE), digits = 1), sep = ""),
-          paste("Probability of a Delay of at most 20mins: ", round(pnorm(
-            20,
-            mean(as.numeric(filtered$Delay), na.rm = TRUE),
-            sd(as.numeric(filtered$Delay), na.rm = TRUE),
-            lower.tail = TRUE
-          )*100, digits = 1), "%", sep = "")
+          paste("Max Delay Mins: ", maxDelay, sep = ""),
+          paste("Average Delay Of Flights: ", avgDelay, sep = ""),
+          paste("Standard Deviation of Delay Mins: ", std, sep = ""),
+          paste("Probability of a Delay of at most 20mins: ", prob20, "%", sep = "")
         )
       )
       
