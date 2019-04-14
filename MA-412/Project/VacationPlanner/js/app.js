@@ -203,7 +203,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
 
     $scope.performDelayMath = function(data) {
         if (data.length < 2) {
-
+            break;
         } else {
             $scope.findMean(data);
             $scope.countTotalFlights(data);
