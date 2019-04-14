@@ -24,31 +24,26 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
         $scope.loading = false;
     })
 
-
-    // $scope.testDate = "1/1/18";
-    // $scope.testCarrier = "AA";
-    // $scope.testOrgin = "DFW";
-    // $scope.testDest = "SFO";
-    // $http({
-    //     method: "GET",
-    //     url: "./js/data/Delay_Jan.json"
-    // }).then(function(response) {
-    //     //console.log(response.data.January);
-    //     _.forEach(response.data.January, function(value) {
-    //         //console.log(value);
-    //         if (value.Date == $scope.testDate && value.Carrier == $scope.testCarrier && value.Origin == $scope.testOrgin && value.Dest == $scope.testDest) {
-    //             console.log(value);
-    //         }
-    //     });
-    // })
-
     $scope.selectAirline = function (selected) {
         $scope.airline = selected;
     }
 
     $scope.search = function () {
+        $scope.totalFlights = null;
+        $scope.totalEarlyFlights = null;
+        $scope.totalDelayFlights = null;
+        $scope.delayMean = null;
+        $scope.maxDelay = null;
+        $scope.delayStd = null;
+        $scope.delaySkew = null;
+        $scope.probDelay_0 = null;
+        $scope.probDelay_20 = null;
+        $scope.probDelay_40 = null;
+
+
         $scope.delayLoading = true;
         $scope.resultList = [];
+        $scope.cancelList = [];
         var month = moment($scope.flightDate).format("M").toString();
         var flightDate = moment($scope.flightDate).format("M/D/18").toString();
         switch (month) {
@@ -65,7 +60,12 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
                             data.Origin == $scope.origin &&
                             data.Dest == $scope.dest
                         ) {
-                            $scope.resultList.push(parseInt(data.Delay));
+                            if (data.Cancel == 1) {
+                                $scope.cancelList.push(parseInt(data.Cancel));
+                            } else {
+                                $scope.resultList.push(parseInt(data.Delay));
+                            }
+                            
                         }
                     })
                     $scope.performDelayMath($scope.resultList);
@@ -145,7 +145,7 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
                         }
                     })
                     $scope.performDelayMath($scope.resultList);
-                   //console.log($scope.resultList);
+                    //console.log($scope.resultList);
                 })
                 break;
             case "6":
@@ -200,40 +200,53 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
         }
         //console.log(moment($scope.flightDate).format("M/D/YY") + " " + $scope.airline + " " + $scope.origin +  " " + $scope.dest);
     }
-
-    $scope.performDelayMath = function(data) {
-        if (data.length < 2) {
-            break;
-        } else {
-            $scope.findMean(data);
-            $scope.countTotalFlights(data);
-            $scope.findMaxDelay();
-            $scope.findStdDev(data);
-            $scope.findVar(data);
-            $scope.findSkew(data);
-            $scope.delayLoading = false;
-        }
-
+    //#region Delay and Cancel
+    $scope.performDelayMath = function (data) {
+        $scope.findMean(data);
+        $scope.countTotalFlights(data);
+        $scope.findMaxDelay();
+        $scope.findStdDev(data);
+        //$scope.findSkew(data);
+        $scope.findProb(data);
+        $scope.findCancels($scope.cancelList);
+        //console.log($scope.resultList);
+        $scope.delayLoading = false;
     }
 
+    $scope.totalCancels;
+    $scope.percentTotal;
+    $scope.findCancels = function (data) {
+        $scope.totalCancels = "Total Canceled Flights: " + data.length;
+        $scope.percentTotal = "Percent Of All Flights Cancelled: " + _.round(data.length / $scope.resultList.length, 1) * 100 + "%"; 
+    }
+
+
     $scope.delayMean;
-    $scope.findMean = function(data) {
-        $scope.delayMean = "Average Delay of Flights: " + _.round(_.mean(data),1) + " mins";
+    $scope.findMean = function (data) {
+        $scope.delayMean = "Average Delay of Flights: " + _.round(_.mean(data), 1) + " mins";
     }
 
     $scope.delayStd;
-    $scope.findStdDev = function(data) {
-        $scope.delayStd = "Standard Deviation of Delays: " + _.round(ss.standardDeviation(data),1) + " mins";
-    }
-
-    $scope.delayVar;
-    $scope.findVar = function(data) {
-        $scope.delayVar = "Variance of Delays: " + _.round(ss.variance(data),1) + " mins";
+    $scope.findStdDev = function (data) {
+        $scope.delayStd = "Standard Deviation of Delays: " + _.round(ss.standardDeviation(data), 1) + " mins";
     }
 
     $scope.delaySkew;
-    $scope.findSkew = function(data) {
+    $scope.findSkew = function (data) {
         $scope.delaySkew = "Skewness of Delays: " + _.round(ss.sampleSkewness(data), 1);
+    }
+
+    $scope.probDelay
+    $scope.probDelay_0;
+    $scope.probDelay_20;
+    $scope.probDelay_40;
+    $scope.findProb = function (data) {
+        var delayStd = ss.standardDeviation(data);
+        var delayMean = ss.mean(data);
+        //console.log(jStat.normal.cdf(0, delayMean, delayStd));
+        $scope.probDelay_0 = "Probability of Flight Departing on-time or earlier: " + _.round(jStat.normal.cdf(0, delayMean, delayStd), 1) * 100 + "%";
+        $scope.probDelay_20 = "Probability of Flight Departing 20 mins late or earlier: " + _.round(jStat.normal.cdf(20, delayMean, delayStd), 1) * 100 + "%";
+        $scope.probDelay_40 = "Probability of Flight Departing 40 mins late or earlier: " + _.round(jStat.normal.cdf(40, delayMean, delayStd), 1) * 100 + "%";
     }
 
     $scope.earlyList = [];
@@ -241,10 +254,10 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     $scope.totalFlights;
     $scope.totalEarlyFlights;
     $scope.totalDelayFlights;
-    $scope.countTotalFlights = function(data) {
+    $scope.countTotalFlights = function (data) {
         $scope.totalFlights = "Total Flights: " + data.length;
 
-        _.forEach(data, function(result) {
+        _.forEach(data, function (result) {
             if (result <= 0) {
                 $scope.earlyList.push(result);
             } else {
@@ -257,8 +270,13 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
     }
 
     $scope.maxDelay;
-    $scope.findMaxDelay = function() {
+    $scope.findMaxDelay = function () {
         $scope.maxDelay = "Max Delay: " + _.max($scope.delayList) + " mins";
     }
+    //#endregion
 
+
+    //#region Fares
+
+    //#endregion
 }]);

@@ -7,6 +7,7 @@
     <script src="./js/lodash.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src='https://unpkg.com/simple-statistics@7.0.2/dist/simple-statistics.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/jstat@1.7.1/dist/jstat.min.js"></script>
     <title>Vacation Planner</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +15,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/styles/style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet">
 </head>
 
 
@@ -61,12 +64,13 @@
             </div>
         </div>
         <div class="content">
+            <div class="background"></div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="note">
                             <div class="note-title">
-                                <p>Flight Delay And Cancels Stats</p>
+                                <p>Flight Delay Stats</p>
                                 <p class="sub-title">Negative Minutes Indicate Early Departures</pc>
                             </div>
                             <hr class='divider'>
@@ -77,17 +81,28 @@
                                 <p>{{ totalFlights }}</p>
                                 <p>{{ totalEarlyFlights }}</p>
                                 <p>{{ totalDelayFlights }}</p>
-                                <p>{{ delayMean }}</p>
                                 <p>{{ maxDelay }}</p>
+                                <p>{{ delayMean }}</p>
+                                <p>{{ delayStd }}</p>
+                                <p>{{ delaySkew }}</p>
                             </div>
                             <div class="note-title">
-                                <p>Flight Delay And Cancels Probabilities</p>
+                                <p>Flight Delay Probabilities</p>
+                                <p class="sub-title">Larger Percentage Is Better</p>
                             </div>
                             <hr class="divider">
                             <div class="note-content">
-                                <p>{{ delayStd }}</p>
-                                <p>{{ delayVar }}</p>
-                                <p>{{ delaySkew }}</p>
+                                <p>{{ probDelay_0 }}</p>
+                                <p>{{ probDelay_20 }}</p>
+                                <p>{{ probDelay_40 }}</p>
+                            </div>
+                            <div class="note-title">
+                                <p>Flight Cancel Stats and Probabilities</p>
+                            </div>
+                            <hr class="divider">
+                            <div class="note-content">
+                                <p>{{ totalCancels }}</p>
+                                <p>{{ percentTotal }}</p>
                             </div>
                         </div>
                     </div>

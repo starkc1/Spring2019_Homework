@@ -99,6 +99,18 @@ p {
     overflow-y: scroll;
 }
 
+.background {
+    position: fixed;
+    background-color: #00bfa5;
+    top: -200px;
+    right: 0;
+    left: 275px;
+    height: 700px;
+    width: 100%;
+    z-index: 0;
+    transform: rotate(15deg);
+}
+
 .divider {
     margin: 0;
 }

@@ -1,3 +1,5 @@
 https://simplestatistics.org/docs/#zscore
 
 https://lodash.com/
+
+http://jstat.github.io/
