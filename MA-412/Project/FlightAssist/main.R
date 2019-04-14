@@ -5,7 +5,6 @@ library(openxlsx)
 library(shinyjs)
 
 
-
 ui <- dashboardPage(
   dashboardHeader(
     title = "Vacation Planner"
@@ -94,6 +93,10 @@ ui <- dashboardPage(
     actionButton(
       "search",
       "Search"
+    ),
+    actionButton(
+      'test',
+      "test"
     ),
     hidden(
       div(

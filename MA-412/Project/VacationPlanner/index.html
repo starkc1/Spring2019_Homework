@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="./js/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src='https://unpkg.com/simple-statistics@7.0.2/dist/simple-statistics.min.js'></script>
+    <title>Vacation Planner</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/styles/style.css" rel="stylesheet">
+</head>
+
+
+<body ng-app="VacationPlanner" ng-controller="MainController">
+    <div class="view">
+        <div class="sidebar">
+            <div class="sidebar-title">
+                <p>Vacation Planner</p>
+            </div>
+            <div class="sidebar-content">
+                <form>
+                    <div class="form-group">
+                        <label for="flightDate">Enter Flight Date</label>
+                        <input type="date" class="form-control" id="flightDate" placeholder="Enter Flight Date" ng-model="flightDate">
+                    </div>
+                    <div class="dropdown">
+                        <label for="airlineDropdown">Select Airline</label>
+                        <button class="btn dropdown-toggle" type="button" id="airlineDropdown" data-toggle="dropdown">
+                            {{ airline }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="airlineDropdown">
+                            <!-- <a class="dropdown-item" ng-click="selectAirline('something')">Something</a> -->
+                            <a class="dropdown-item" ng-repeat="item in airlineList" ng-click="selectAirline(item)">{{ item }}</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="originAirport">Enter Origin Airport</label>
+                        <input type="text" class="form-control" id="originAirport" placeholder="Enter Origin Aiport" ng-model="origin">
+                    </div>
+                    <div class="form-group">
+                        <label for="destAirport">Enter Destination Airport</label>
+                        <input type="text" class="form-control" id="destAirport" placeholder="Enter Destination Aiport" ng-model="dest">
+                    </div>
+                </form>
+                <br>
+                <br>
+                <button class="btn" type="button" id="search" ng-click="search()">
+                    Search
+                </button>
+                <br>
+                <br>
+                <div class="spinner-border text-light" role="status" ng-if="loading == true" style="height: 100px; width: 100px; font-size: 30px; ">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="note">
+                            <div class="note-title">
+                                <p>Flight Delay And Cancels Stats</p>
+                                <p class="sub-title">Negative Minutes Indicate Early Departures</pc>
+                            </div>
+                            <hr class='divider'>
+                            <div class="note-content">
+                                <div class="spinner-border" role="status" ng-if="delayLoading == true" style="height: 100px; width: 100px; font-size: 30px; color: #00bfa5;">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <p>{{ totalFlights }}</p>
+                                <p>{{ totalEarlyFlights }}</p>
+                                <p>{{ totalDelayFlights }}</p>
+                                <p>{{ delayMean }}</p>
+                                <p>{{ maxDelay }}</p>
+                            </div>
+                            <div class="note-title">
+                                <p>Flight Delay And Cancels Probabilities</p>
+                            </div>
+                            <hr class="divider">
+                            <div class="note-content">
+                                <p>{{ delayStd }}</p>
+                                <p>{{ delayVar }}</p>
+                                <p>{{ delaySkew }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="note">
+                            <div class="note-title">
+                                <p>Flight Fare Stats</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+<script src="js/app.js"></script>
+
+</html>
