@@ -43,6 +43,8 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
 
         $scope.delayLoading = true;
         $scope.resultList = [];
+        $scope.delayList = [];
+        $scope.earlyList = [];
         $scope.cancelList = [];
         var month = moment($scope.flightDate).format("M").toString();
         var flightDate = moment($scope.flightDate).format("M/D/18").toString();
@@ -187,14 +189,94 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
                 })
                 break;
             case "8":
+                $http({
+                    method: "GET",
+                    url: "./js/data/Delay_Aug.json"
+                }).then(function(response) {
+                    _.forEach(response.data.August, function(data) {
+                        if (
+                            data.Date == flightDate &&
+                            data.Carrier == $scope.airline &&
+                            data.Origin == $scope.origin &&
+                            data.Dest == $scope.dest
+                        ) {
+                            $scope.resultList.push(parseInt(data.Delay));
+                        }
+                    })
+                    $scope.performDelayMath($scope.resultList);
+                })
                 break;
             case "9":
+                $http({
+                    method: "GET",
+                    url: "./js/data/Delay_Sep.json"
+                }).then(function(response) {
+                    _.forEach(response.data.September, function(data) {
+                        if (
+                            data.Date == flightDate &&
+                            data.Carrier == $scope.airline &&
+                            data.Origin == $scope.origin &&
+                            data.Dest == $scope.dest
+                        ) {
+                            $scope.resultList.push(parseInt(data.Delay));
+                        }
+                    })
+                    $scope.performDelayMath($scope.resultList);
+                })
                 break;
             case "10":
+                $http({
+                    method: "GET",
+                    url: "./js/data/Delay_Oct.json"
+                }).then(function(response) {
+                    _.forEach(response.data.October, function(data) {
+                        if (
+                            data.Date == flightDate &&
+                            data.Carrier == $scope.airline &&
+                            data.Origin == $scope.origin &&
+                            data.Dest == $scope.dest
+                        ) {
+                            $scope.resultList.push(parseInt(data.Delay));
+                        }
+                    })
+                    $scope.performDelayMath($scope.resultList);
+                })
                 break;
             case "11":
+                $http({
+                    method: "GET",
+                    url: "./js/data/Delay_Nov.json"
+                }).then(function(response) {
+                    _.forEach(response.data.November, function(data) {
+                        if (
+                            data.Date == flightDate &&
+                            data.Carrier == $scope.airline &&
+                            data.Origin == $scope.origin &&
+                            data.Dest == $scope.dest
+                        ) {
+                            $scope.resultList.push(parseInt(data.Delay));
+                        }
+                    })
+                    $scope.performDelayMath($scope.resultList);
+                })
                 break;
             case "12":
+                $http({
+                    method: "GET",
+                    url: "./js/data/Delay_Dec.json"
+                }).then(function(response) {
+                    _.forEach(response.data.December, function(data) {
+                        if (
+                            data.Date == flightDate &&
+                            data.Carrier == $scope.airline &&
+                            data.Origin == $scope.origin &&
+                            data.Dest == $scope.dest
+                        ) {
+                            $scope.resultList.push(parseInt(data.Delay));
+                        }
+                    })
+                    $scope.performDelayMath($scope.resultList);
+                })
                 break;
 
         }
