@@ -46,6 +46,8 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
         $scope.delayList = [];
         $scope.earlyList = [];
         $scope.cancelList = [];
+
+        $scope.fareList =  [];
         var month = moment($scope.flightDate).format("M").toString();
         var flightDate = moment($scope.flightDate).format("M/D/18").toString();
         switch (month) {
@@ -72,6 +74,19 @@ app.controller('MainController', ['$scope', '$http', function ($scope, $http) {
                     })
                     $scope.performDelayMath($scope.resultList);
                     //console.log($scope.resultList);
+                })
+
+                $http({
+                    method: "GET",
+                    url: "./js/data/Q1_Fares.json"
+                }).then(function(response) {
+                    //console.log(response);
+                    _.forEach(response.data.Q1, function (data) {
+                        if (data.Airport == $scope.origin) {
+                            $scope.fareList.push(parseFloat(data.Fare));
+                        }
+                    })
+                    console.log($scope.fareList);
                 })
                 break;
             case "2":

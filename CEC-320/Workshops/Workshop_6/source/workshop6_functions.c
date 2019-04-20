@@ -27,19 +27,65 @@ void hp_float_to_fields(double f, hp_float_fields_TypeDef *field) {
     // 1.0 * 2^(1-bias) = 1.0 * 2^(1 - 15) = 2^(-14).
     const double hp_float_min_norm = pow(2.0, (1-bias));
 	
-		float float_Val = (float) f;
+		float floata = 1.0;
+	float floatb = 2.0;
 	
-    // Determine field->sign
+	//sign code
+	if (f < 0) {
+		field->sign = 1;
+	} else {
+		field->sign = 0;
+	}
 	
-    // Determine field->exponent
-    
-    // Determine field->fraction
+	
+	//exponent code
+	int exponent = 0;
+	
+	if (f > hp_float_max) {
+		exponent = pow(2, n_expt - 1);
+		f = 0;
+	} else if (f >= hp_float_min_norm) {
+		while (f >= floatb) {
+			f /= floatb;
+			exponent++;
+		}
+		while (f < floata) {
+			f *= floata;
+			exponent--;
+		}
+		f -= floata;
+	} else {
+		exponent = -bias;
+		f *= pow(2.0, bias - 1);
+	}
+	field->exponent = exponent + bias;
+  
+	
+	//fraction code
+	uint32_t fraction = 0;
+	for (int j = 0; j < n_frac; j++) {
+		f *= floatb;
+		if (f >= floata) {
+			f -= floata;
+			fraction += 1 << (n_frac - 1 - j);
+		}
+	}
+	field->fraction = fraction;
  
-    return;
+  return;
 }
 
 float fields_to_hp_float(uint8_t sign, uint8_t expt, uint32_t frac) {
 	float f = 0.0;
+	float fraction = frac;
+	
+	fraction = fraction / pow(2, n_frac);
+	
+	if ((expt == 0) && (frac != 0)) {
+		f = pow(-1, sign) * (fraction) * pow(2, -(bias - 1));
+	} else {
+		f = pow(-1, sign) * (1 + fraction) * pow(2, (expt - bias));
+	}
 
     return f;
 }
