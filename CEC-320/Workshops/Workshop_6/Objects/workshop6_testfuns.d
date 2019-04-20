@@ -1,0 +1,12 @@
+.\objects\workshop6_testfuns.o: source\workshop6_testFuns.c
+.\objects\workshop6_testfuns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\workshop6_testfuns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\workshop6_testfuns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\workshop6_testfuns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\workshop6_testfuns.o: source\workshop6_functions.h
+.\objects\workshop6_testfuns.o: .\lib\unity\unity.h
+.\objects\workshop6_testfuns.o: .\lib\unity\unity_internals.h
+.\objects\workshop6_testfuns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\setjmp.h
+.\objects\workshop6_testfuns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\workshop6_testfuns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\objects\workshop6_testfuns.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
