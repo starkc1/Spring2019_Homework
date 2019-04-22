@@ -68,7 +68,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="note">
+                        <div class="note" ng-repeat="item in delayResults">
                             <div class="note-title">
                                 <p>Flight Delay Stats</p>
                                 <p class="sub-title">Negative Minutes Indicate Early Departures</pc>
@@ -78,13 +78,12 @@
                                 <div class="spinner-border" role="status" ng-if="delayLoading == true" style="height: 100px; width: 100px; font-size: 30px; color: #00bfa5;">
                                     <span class="sr-only">Loading...</span>
                                 </div>
-                                <p>{{ totalFlights }}</p>
-                                <p>{{ totalEarlyFlights }}</p>
-                                <p>{{ totalDelayFlights }}</p>
-                                <p>{{ maxDelay }}</p>
-                                <p>{{ delayMean }}</p>
-                                <p>{{ delayStd }}</p>
-                                <p>{{ delaySkew }}</p>
+                                <p>{{ item.totalFlights }}</p>
+                                <p>{{ item.totalEarlyFlights }}</p>
+                                <p>{{ item.totalDelayFlights }}</p>
+                                <p>{{ item.maxDelay }}</p>
+                                <p>{{ item.delayMean }}</p>
+                                <p>{{ item.delayStd }}</p>
                             </div>
                             <div class="note-title">
                                 <p>Flight Delay Probabilities</p>
@@ -92,24 +91,32 @@
                             </div>
                             <hr class="divider">
                             <div class="note-content">
-                                <p>{{ probDelay_0 }}</p>
-                                <p>{{ probDelay_20 }}</p>
-                                <p>{{ probDelay_40 }}</p>
+                                <p>{{ item.probDelay_0 }}</p>
+                                <p>{{ item.probDelay_20 }}</p>
+                                <p>{{ item.probDelay_40 }}</p>
                             </div>
                             <div class="note-title">
                                 <p>Flight Cancel Stats and Probabilities</p>
                             </div>
                             <hr class="divider">
                             <div class="note-content">
-                                <p>{{ totalCancels }}</p>
-                                <p>{{ percentTotal }}</p>
+                                <p>{{ item.totalCancels }}</p>
+                                <p>{{ item.percentTotal }}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="note">
+                        <div class="note" ng-repeat="item in fareResults">
                             <div class="note-title">
                                 <p>Flight Fare Stats</p>
+                            </div>
+                            <hr class="divider">
+                            <div class="note-content">
+                                <div class="spinner-border" role="status" ng-if="fareLoading == true" style="height: 100px; width: 100px; font-size: 30px; color: #00bfa5;">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                                <p>{{ item.fareMean }}</p>
+                                <p>{{ item.fareStd }}</p>
                             </div>
                         </div>
                     </div>
