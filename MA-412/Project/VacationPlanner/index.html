@@ -14,13 +14,17 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="/styles/style.css" rel="stylesheet">
+    <link href="./styles/style.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+    
 </head>
 
 
-<body ng-app="VacationPlanner" ng-controller="MainController">
+<body ng-app="VacationPlanner" ng-controller="MainController" >
     <div class="view">
         <div class="sidebar">
             <div class="sidebar-title">
@@ -52,8 +56,8 @@
                     </div>
                 </form>
                 <br>
-                <br>
-                <button class="btn" type="button" id="search" ng-click="search()">
+                <p ng-if="flightDate == null || airline == 'Select Airline' || origin == null || dest == null">Select a Flight Date, Airline, Departure and Arrival Airport</p>
+                <button class="btn" type="button" id="search" ng-click="search()" ng-if="flightDate != null && airline != 'Select Airline' && origin != null && dest != null">
                     Search
                 </button>
                 <br>
@@ -65,19 +69,20 @@
         </div>
         <div class="content">
             <div class="background"></div>
-            <div class="container-fluid">
+            <div class="container-fluid" ng-cloak>
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="note" ng-repeat="item in delayResults">
                             <div class="note-title">
                                 <p>Flight Delay Stats</p>
-                                <p class="sub-title">Negative Minutes Indicate Early Departures</pc>
+                                <p class="sub-title">Negative Minutes Indicate Early Departures</p>
                             </div>
                             <hr class='divider'>
                             <div class="note-content">
                                 <div class="spinner-border" role="status" ng-if="delayLoading == true" style="height: 100px; width: 100px; font-size: 30px; color: #00bfa5;">
                                     <span class="sr-only">Loading...</span>
                                 </div>
+                                <p class="error">{{ delayError }}</p>
                                 <p>{{ item.totalFlights }}</p>
                                 <p>{{ item.totalEarlyFlights }}</p>
                                 <p>{{ item.totalDelayFlights }}</p>
@@ -94,6 +99,15 @@
                                 <p>{{ item.probDelay_0 }}</p>
                                 <p>{{ item.probDelay_20 }}</p>
                                 <p>{{ item.probDelay_40 }}</p>
+                            </div>
+                            <div class="note-title">
+                                <p>Flight Delay Analysis</p>
+                            </div>
+                            <hr class="divider">
+                            <div class="note-content">
+                                <p>{{ item.confidence_90 }}</p>
+                                <p>{{ item.confidence_95 }}</p>
+                                <p>{{ item.confidence_99 }}</p>
                             </div>
                             <div class="note-title">
                                 <p>Flight Cancel Stats and Probabilities</p>
@@ -115,8 +129,28 @@
                                 <div class="spinner-border" role="status" ng-if="fareLoading == true" style="height: 100px; width: 100px; font-size: 30px; color: #00bfa5;">
                                     <span class="sr-only">Loading...</span>
                                 </div>
+                                <p>{{ item.maxFare }}</p>
                                 <p>{{ item.fareMean }}</p>
                                 <p>{{ item.fareStd }}</p>
+                            </div>
+                            <div class="note-title">
+                                <p>Flight Fare Probabilities</p>
+                            </div>
+                            <hr class="divider">
+                            <div class="note-content">
+                                <p>{{ item.fare_200 }}</p>
+                                <p>{{ item.fare_300 }}</p>
+                                <p>{{ item.fare_400 }}</p>
+                                <p>{{ item.fare_500 }}</p>
+                            </div>
+                            <div class="note-title">
+                                <p>Flight Fare Analysis</p>
+                            </div>
+                            <hr class="divider">
+                            <div class="note-content">
+                                <p>{{ item.fareCI_90 }}</p>
+                                <p>{{ item.fareCI_95 }}</p>
+                                <p>{{ item.fareCI_99 }}</p>
                             </div>
                         </div>
                     </div>
@@ -125,7 +159,26 @@
         </div>
     </div>
 
+    <script ng-if="q1 == true" src="./js/data/Q1_Fares.js"></script>
+    <script ng-if="q2 == true" src='./js/data/Q2_Fares.js'></script>
+    <script ng-if="q3 == true" src="js/data/Q3_Fares.js"></script>
+    <script ng-if="q4 == true" src="js/data/Q4_Fares.js"></script>
 
+    <!-- <script src="js/data/carriers.js"></script> -->
+
+    <script ng-if="Apr == true" src="js/data/Delay_Apr.js"></script>
+    <script ng-if="Aug == true" src="js/data/Delay_Aug.js"></script>
+    <script ng-if="Dec == true" src="js/data/Delay_Dec.js"></script>
+    <script ng-if="Feb == true" src="js/data/Delay_Feb.js"></script>
+    <script ng-if="Jan == true" src="js/data/Delay_Jan.js"></script>
+    <script ng-if="Jun == true" src="js/data/Delay_Jun.js"></script>
+    <script ng-if="Jul == true" src="js/data/Delay_Jul.js"></script>
+    <script ng-if="Mar == true" src="js/data/Delay_Mar.js"></script>
+    <script ng-if="May == true" src="js/data/Delay_May.js"></script>
+    <script ng-if="Nov == true" src="js/data/Delay_Nov.js"></script>
+    <script ng-if="Oct == true" src="js/data/Delay_Oct.js"></script>
+    <script ng-if="Sep == true" src="js/data/Delay_Sep.js"></script>
+    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

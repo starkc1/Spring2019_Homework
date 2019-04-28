@@ -144,3 +144,9 @@ p {
     padding: 10px;
     font-size: 18px;
 }
+
+.error { 
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+}
